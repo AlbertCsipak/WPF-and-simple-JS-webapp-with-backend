@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Reposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Endpoint", "Z6O9JF_HFT_2021221.Endpoint\Z6O9JF_HFT_2021221.Endpoint.csproj", "{0A0CF844-9A94-41B8-B656-6E59F6E69155}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Test", "Z6O9JF_HFT_2021221.Test\Z6O9JF_HFT_2021221.Test.csproj", "{3BB8AA05-C020-4E12-93AE-B9D6CD1AE620}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0A0CF844-9A94-41B8-B656-6E59F6E69155}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A0CF844-9A94-41B8-B656-6E59F6E69155}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A0CF844-9A94-41B8-B656-6E59F6E69155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB8AA05-C020-4E12-93AE-B9D6CD1AE620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB8AA05-C020-4E12-93AE-B9D6CD1AE620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB8AA05-C020-4E12-93AE-B9D6CD1AE620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB8AA05-C020-4E12-93AE-B9D6CD1AE620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
