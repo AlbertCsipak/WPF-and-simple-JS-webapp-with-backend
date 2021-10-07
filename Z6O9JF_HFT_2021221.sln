@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Data", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Logic", "Z6O9JF_HFT_2021221.Logic\Z6O9JF_HFT_2021221.Logic.csproj", "{52E04FBA-D469-4BE8-ADEB-4922E292912D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Repository", "Z6O9JF_HFT_2021221.Repository\Z6O9JF_HFT_2021221.Repository.csproj", "{8DAB5C4E-5C91-4E81-AA92-16172CD3A120}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{52E04FBA-D469-4BE8-ADEB-4922E292912D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E04FBA-D469-4BE8-ADEB-4922E292912D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E04FBA-D469-4BE8-ADEB-4922E292912D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAB5C4E-5C91-4E81-AA92-16172CD3A120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAB5C4E-5C91-4E81-AA92-16172CD3A120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAB5C4E-5C91-4E81-AA92-16172CD3A120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAB5C4E-5C91-4E81-AA92-16172CD3A120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
