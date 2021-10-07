@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{ED1E72
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z6O9JF_HFT_2021221.Models", "Z6O9JF_HFT_2021221.Models\Z6O9JF_HFT_2021221.Models.csproj", "{F8E4B7B1-4CDF-4650-A415-0BF7AF8DE81E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9B27A60D-E132-4C1F-B6C3-CD9680D6ED98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B27A60D-E132-4C1F-B6C3-CD9680D6ED98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B27A60D-E132-4C1F-B6C3-CD9680D6ED98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E4B7B1-4CDF-4650-A415-0BF7AF8DE81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E4B7B1-4CDF-4650-A415-0BF7AF8DE81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E4B7B1-4CDF-4650-A415-0BF7AF8DE81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E4B7B1-4CDF-4650-A415-0BF7AF8DE81E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
