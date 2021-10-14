@@ -13,9 +13,7 @@ namespace Z6O9JF_HFT_2021221.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Vin { get; set; }
-        public enum BodyStyleEnum { Sedan, Hatchback, Coupe, Wagon }
-        public BodyStyleEnum BodyStyle { get; set; }
-        public enum ColorEnum {Green,Blue,Black,White,Gray,Yellow,Red }
-        public ColorEnum Color { get; set; }
+        public Enums.BodyStyleEnum BodyStyle { get; set; }
+        public Enums.ColorEnum Color { get; set; }
     }
 }
