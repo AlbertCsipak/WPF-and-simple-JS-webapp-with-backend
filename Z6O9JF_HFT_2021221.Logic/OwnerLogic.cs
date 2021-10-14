@@ -1,12 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Z6O9JF_HFT_2021221.Repository;
+using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    class OwnerLogic
+    public class OwnerLogic
     {
+        IOwnerRepository myRepository;
+        public OwnerLogic(IOwnerRepository entity)
+        {
+            this.myRepository = entity;
+        }
+        public IEnumerable<Owner> GetAll()
+        {
+            return myRepository.GetAll();
+        }
+        public void Create(Owner entity)
+        {
+            myRepository.Create(entity);
+        }
+        public Owner Read(int id)
+        {
+            return myRepository.Read(id);
+        }
+        public void Update(Owner entity)
+        {
+            myRepository.Update(entity);
+        }
+        public void Delete(int id)
+        {
+            myRepository.Delete(id);
+        }
     }
 }
