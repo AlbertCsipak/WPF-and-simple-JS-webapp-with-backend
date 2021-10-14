@@ -7,37 +7,24 @@ namespace Z6O9JF_HFT_2021221.Repository
 {
     public class CarRepository
     {
-
         MyDbContext dataBase;
-
         public CarRepository(MyDbContext database)
         {
             this.dataBase = database;
         }
-
+        public IQueryable<Car> GetAll()
+        {
+            return dataBase.Car;
+        }
         public void Create(Car entity)
         {
             dataBase.Car.Add(entity);
             dataBase.SaveChanges();
         }
-
         public Car Read(int id)
         {
             return dataBase.Car.FirstOrDefault(entity => entity.Vin == id);
-        }
-
-        public IQueryable<Car> GetAll()
-        {
-            return dataBase.Car;
-        }
-
-        public void Delete(int id)
-        {
-            var entity = Read(id);
-            dataBase.Car.Remove(entity);
-            dataBase.SaveChanges();
-        }
-
+        }        
         public void Update(Car entity)
         {
             var entityToUpdate = Read(entity.Vin);
@@ -48,6 +35,12 @@ namespace Z6O9JF_HFT_2021221.Repository
             entityToUpdate.BodyStyle = entity.BodyStyle;
             entityToUpdate.Color = entity.Color;
             entityToUpdate.EngineCode = entity.EngineCode;
+            dataBase.SaveChanges();
+        }
+        public void Delete(int id)
+        {
+            var entity = Read(id);
+            dataBase.Car.Remove(entity);
             dataBase.SaveChanges();
         }
     }

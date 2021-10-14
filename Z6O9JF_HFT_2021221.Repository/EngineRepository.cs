@@ -8,35 +8,23 @@ namespace Z6O9JF_HFT_2021221.Repository
     public class EngineRepository
     {
         MyDbContext dataBase;
-
         public EngineRepository(MyDbContext database)
         {
             this.dataBase = database;
-        }
-
+        }        
+        public IQueryable<Engine> GetAll()
+        {
+            return dataBase.Engine;
+        }    
         public void Create(Engine entity)
         {
             dataBase.Engine.Add(entity);
             dataBase.SaveChanges();
         }
-
         public Engine Read(int id)
         {
             return dataBase.Engine.FirstOrDefault(entity => entity.EngineCode == id);
         }
-
-        public IQueryable<Engine> GetAll()
-        {
-            return dataBase.Engine;
-        }
-
-        public void Delete(int id)
-        {
-            var entity = Read(id);
-            dataBase.Engine.Remove(entity);
-            dataBase.SaveChanges();
-        }
-
         public void Update(Engine entity)
         {
             var entityToUpdate = Read(entity.EngineCode);
@@ -44,7 +32,12 @@ namespace Z6O9JF_HFT_2021221.Repository
             entityToUpdate.Displacement = entity.Displacement;
             entityToUpdate.EngineType = entity.EngineType;
             entityToUpdate.Power = entity.Power;
-
+            dataBase.SaveChanges();
+        }
+        public void Delete(int id)
+        {
+            var entity = Read(id);
+            dataBase.Engine.Remove(entity);
             dataBase.SaveChanges();
         }
     }

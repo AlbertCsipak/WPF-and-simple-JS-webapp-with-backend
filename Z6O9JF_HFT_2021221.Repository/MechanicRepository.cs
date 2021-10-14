@@ -9,35 +9,23 @@ namespace Z6O9JF_HFT_2021221.Repository
     public class MechanicRepository
     {
         MyDbContext dataBase;
-
         public MechanicRepository(MyDbContext database)
         {
             this.dataBase = database;
+        }        
+        public IQueryable<Mechanic> GetAll()
+        {
+            return dataBase.Mechanic;
         }
-
         public void Create(Mechanic entity)
         {
             dataBase.Mechanic.Add(entity);
             dataBase.SaveChanges();
         }
-
         public Mechanic Read(int id)
         {
             return dataBase.Mechanic.FirstOrDefault(entity => entity.MechanicId == id);
         }
-
-        public IQueryable<Mechanic> GetAll()
-        {
-            return dataBase.Mechanic;
-        }
-
-        public void Delete(int id)
-        {
-            var entity = Read(id);
-            dataBase.Mechanic.Remove(entity);
-            dataBase.SaveChanges();
-        }
-
         public void Update(Mechanic entity)
         {
             var entityToUpdate = Read(entity.MechanicId);
@@ -45,5 +33,12 @@ namespace Z6O9JF_HFT_2021221.Repository
             entityToUpdate.ServiceId = entity.ServiceId;
             dataBase.SaveChanges();
         }
+        public void Delete(int id)
+        {
+            var entity = Read(id);
+            dataBase.Mechanic.Remove(entity);
+            dataBase.SaveChanges();
+        }
+
     }
 }
