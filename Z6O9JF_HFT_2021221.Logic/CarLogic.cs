@@ -5,26 +5,26 @@ using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    public class BrandLogic
+    public class CarLogic
     {
-        IBrandRepository myRepository;
-        public BrandLogic(IBrandRepository entity)
+        ICarRepository myRepository;
+        public CarLogic(ICarRepository entity)
         {
             this.myRepository = entity;
-        }        
-        public IEnumerable<Brand> GetAll()
+        }
+        public IEnumerable<Car> GetAll()
         {
             return myRepository.GetAll();
-        }   
-        public void Create(Brand entity)
+        }
+        public void Create(Car entity)
         {
             myRepository.Create(entity);
         }
-        public Brand Read(int id)
+        public Car Read(int id)
         {
             return myRepository.Read(id);
         }
-        public void Update(Brand entity)
+        public void Update(Car entity)
         {
             myRepository.Update(entity);
         }
