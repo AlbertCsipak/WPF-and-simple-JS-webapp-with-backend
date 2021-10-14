@@ -14,6 +14,7 @@ namespace Z6O9JF_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Vin { get; set; }
         public string Model { get; set; }
+        public int ServiceCost { get; set; }
         public Enums.BodyStyleEnum BodyStyle { get; set; }
         public Enums.ColorEnum Color { get; set; }
 

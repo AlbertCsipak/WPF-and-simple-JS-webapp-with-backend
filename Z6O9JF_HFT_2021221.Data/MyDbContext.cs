@@ -150,7 +150,8 @@ namespace Z6O9JF_HFT_2021221.Data
                 MechanicId = m1.MechanicId,
                 Vin = 563821741,
                 OwnerId = o1.OwnerId,
-                Model = "A3"
+                Model = "A3",
+                ServiceCost = 300
             };
             Car c2 = new()
             {
@@ -161,7 +162,8 @@ namespace Z6O9JF_HFT_2021221.Data
                 MechanicId = m2.MechanicId,
                 Vin = 563141741,
                 OwnerId = o2.OwnerId,
-                Model = "Golf mk 7"
+                Model = "Golf mk 7",
+                ServiceCost = 600
             };
             Car c3 = new()
             {
@@ -172,7 +174,8 @@ namespace Z6O9JF_HFT_2021221.Data
                 MechanicId = m3.MechanicId,
                 Vin = 993141741,
                 OwnerId = o3.OwnerId,
-                Model = "Golf mk 7"
+                Model = "Civic gen7",
+                ServiceCost = 150
             };
             Car c4 = new()
             {
@@ -183,7 +186,8 @@ namespace Z6O9JF_HFT_2021221.Data
                 MechanicId = m2.MechanicId,
                 Vin = 993144567,
                 OwnerId = o1.OwnerId,
-                Model = "RS3"
+                Model = "RS3",
+                ServiceCost = 1500
             };
 
             modelBuilder.Entity<CarService>().HasData(ServiceOne);
