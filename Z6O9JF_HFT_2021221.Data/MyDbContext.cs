@@ -84,8 +84,8 @@ namespace Z6O9JF_HFT_2021221.Data
             Mechanic m4 = new Mechanic() { ServiceNumber = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
 
             Owner o1 = new Owner() { Name = "Géza", OwnerId = 1 };
-            Owner o2 = new Owner() { Name = "Béla", OwnerId = 1 };
-            Owner o3 = new Owner() { Name = "Dániel", OwnerId = 1 };
+            Owner o2 = new Owner() { Name = "Béla", OwnerId = 2 };
+            Owner o3 = new Owner() { Name = "Dániel", OwnerId = 3 };
 
             Brand audi = new Brand() { Name = "Audi", Location = "Germany", BrandId = 1 };
             Brand vw = new Brand() { Name = "VW", Location = "Germany", BrandId = 8 };
