@@ -19,7 +19,7 @@ namespace Z6O9JF_HFT_2021221.Models
         public virtual CarService CarService { get; set; }
 
         [ForeignKey(nameof(CarService))]
-        public int ServiceNumber { get; set; }
+        public int ServiceId { get; set; }
 
         [NotMapped]
         public virtual ICollection<Car> Cars { get; set; }

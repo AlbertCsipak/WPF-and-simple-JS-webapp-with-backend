@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Z6O9JF_HFT_2021221.Models;
 
@@ -12,10 +13,12 @@ namespace Z6O9JF_HFT_2021221.Data
         public virtual DbSet<Mechanic> Mechanic { get; set; }
         public virtual DbSet<CarService> Service { get; set; }
         public virtual DbSet<Owner> Owner { get; set; }
+
         public MyDbContext()
         {
             this.Database.EnsureCreated();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder dbBuilder)
         {
             if (!dbBuilder.IsConfigured)
@@ -25,6 +28,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 dbBuilder.UseSqlServer(connection);
             }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Car>(entity =>
@@ -64,7 +68,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 entity
                 .HasOne(Mechanic => Mechanic.CarService)
                 .WithMany(Service => Service.Mechanics)
-                .HasForeignKey(Mechanic =>Mechanic.ServiceNumber)
+                .HasForeignKey(Mechanic =>Mechanic.ServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
             });
             modelBuilder.Entity<Engine>(entity =>
@@ -78,10 +82,10 @@ namespace Z6O9JF_HFT_2021221.Data
 
             CarService ServiceOne = new CarService(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 583729174 };
 
-            Mechanic m1 = new Mechanic() { ServiceNumber = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
-            Mechanic m2 = new Mechanic() { ServiceNumber = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };
-            Mechanic m3 = new Mechanic() { ServiceNumber = ServiceOne.TaxNumber, Name = "Ádám", MechanicId = 3 };
-            Mechanic m4 = new Mechanic() { ServiceNumber = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
+            Mechanic m1 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
+            Mechanic m2 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };
+            Mechanic m3 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Ádám", MechanicId = 3 };
+            Mechanic m4 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
 
             Owner o1 = new Owner() { Name = "Géza", OwnerId = 1 };
             Owner o2 = new Owner() { Name = "Béla", OwnerId = 2 };
@@ -128,6 +132,14 @@ namespace Z6O9JF_HFT_2021221.Data
                 EngineType = Enums.EngineType.Petrol,
                 EngineCode = 9846372
             };
+            Engine audi1 = new Engine()
+            {
+                BrandId = audi.BrandId,
+                Displacement = 2480,
+                Power = 400,
+                EngineType = Enums.EngineType.Petrol,
+                EngineCode = 1968473
+            };
 
             Car c1 = new Car()
             {
@@ -162,13 +174,24 @@ namespace Z6O9JF_HFT_2021221.Data
                 OwnerId = o3.OwnerId,
                 Model = "Golf mk 7"
             };
+            Car c4 = new Car()
+            {
+                BodyStyle = Enums.BodyStyleEnum.Sedan,
+                BrandId = audi.BrandId,
+                Color = Enums.ColorEnum.Red,
+                EngineCode = audi1.EngineCode,
+                MechanicId = m2.MechanicId,
+                Vin = 993144567,
+                OwnerId = o1.OwnerId,
+                Model = "RS3"
+            };
 
             modelBuilder.Entity<CarService>().HasData(ServiceOne);
             modelBuilder.Entity<Mechanic>().HasData(m1,m2,m3);
             modelBuilder.Entity<Owner>().HasData(o1,o2,o3);
             modelBuilder.Entity<Brand>().HasData(bmw, vw, audi,mercedes,honda,peugeot,hyundai,chevrolet);
-            modelBuilder.Entity<Engine>().HasData(h1,h2,vw1,vw2);
-            modelBuilder.Entity<Car>().HasData(c1,c2,c3);
+            modelBuilder.Entity<Engine>().HasData(h1,h2,vw1,vw2,audi1);
+            modelBuilder.Entity<Car>().HasData(c1,c2,c3,c4);
         }
     }
 }
