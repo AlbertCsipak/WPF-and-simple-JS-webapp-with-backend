@@ -18,7 +18,30 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Car entity)
         {
-            myRepository.Create(entity);
+            if (entity.MechanicId <1)
+            {
+                throw new ArgumentException("Incorrect MechanicId");
+            }
+            else if (entity.OwnerId < 1)
+            {
+                throw new ArgumentException("Incorrect OwnerId");
+            }
+            else if (entity.Vin.ToString().Length!=9)
+            {
+                throw new ArgumentException("Incorrect Vehicle Identification Number");
+            }
+            else if (entity.BrandId<1)
+            {
+                throw new ArgumentException("Incorrect BrandId");
+            }
+            else if (entity.EngineCode.ToString().Length!=7)
+            {
+                throw new ArgumentException("Incorrect EngineCode");
+            }
+            else
+            {
+                myRepository.Create(entity);
+            }
         }
         public Car Read(int id)
         {

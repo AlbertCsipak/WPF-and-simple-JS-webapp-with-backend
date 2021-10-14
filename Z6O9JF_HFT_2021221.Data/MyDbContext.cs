@@ -106,7 +106,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 Displacement = 1688, 
                 Power = 100, 
                 EngineType = Enums.EngineType.Gasoline, 
-                EngineCode = 12742322 
+                EngineCode = 1274232
             };
             Engine h2 = new()
             {

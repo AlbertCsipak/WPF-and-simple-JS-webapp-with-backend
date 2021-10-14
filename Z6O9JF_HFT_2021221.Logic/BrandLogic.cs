@@ -22,14 +22,6 @@ namespace Z6O9JF_HFT_2021221.Logic
             {
                 throw new ArgumentException("Incorrect BrandId");
             }
-            else if (entity.Name is null || entity.Name.Length<3)
-            {
-                throw new ArgumentException("Incorrect Name");
-            }
-            else if (entity.Location is null || entity.Location.Length<2)
-            {
-                throw new ArgumentException("Incorrect Location");
-            }
             else
             {
                 myRepository.Create(entity);
