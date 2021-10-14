@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.Logic
         }   
         public void Create(Brand entity)
         {
-            if (entity.BrandId is <1)
+            if (entity.BrandId<1)
             {
                 throw new ArgumentException("Incorrect BrandId");
             }

@@ -80,7 +80,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 .OnDelete(DeleteBehavior.Restrict);
             });
 
-            CarService ServiceOne = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 583729174 };
+            CarService ServiceOne = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
 
             Mechanic m1 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
             Mechanic m2 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };

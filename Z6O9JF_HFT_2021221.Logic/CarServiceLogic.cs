@@ -18,7 +18,14 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(CarService entity)
         {
-            myRepository.Create(entity);
+            if (entity.TaxNumber.ToString().Length!=4)
+            {
+                throw new ArgumentException("Incorrect Tax Number");
+            }
+            else
+            {
+                myRepository.Create(entity);
+            }
         }
         public CarService Read(int id)
         {
