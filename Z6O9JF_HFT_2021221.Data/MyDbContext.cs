@@ -6,9 +6,11 @@ namespace Z6O9JF_HFT_2021221.Data
 {
     public class MyDbContext : DbContext
     {
-        public virtual DbSet<Aircraft> Aircraft { get; set; }
-        public virtual DbSet<AircraftBrand> AircraftBrand { get; set; }
-        public virtual DbSet<AircraftEngine> AircraftEngine { get; set; }
+        public virtual DbSet<Car> Car { get; set; }
+        public virtual DbSet<Brand> Brand { get; set; }
+        public virtual DbSet<Engine> Engine { get; set; }
+        public virtual DbSet<Mechanic> Mechanic { get; set; }
+        public virtual DbSet<Service> Service { get; set; }
         public MyDbContext()
         {
             this.Database.EnsureCreated();
@@ -17,9 +19,9 @@ namespace Z6O9JF_HFT_2021221.Data
         {
             if (!dbBuilder.IsConfigured)
             {
-                string conn =@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+                string connection =@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
                 dbBuilder.UseLazyLoadingProxies();
-                dbBuilder.UseSqlServer(conn);
+                dbBuilder.UseSqlServer(connection);
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Z6O9JF_HFT_2021221.Models
 {
-    public class AircraftEngine
+    public class Brand
     {
     }
 }
