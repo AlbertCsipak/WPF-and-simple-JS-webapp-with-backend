@@ -48,7 +48,6 @@ namespace Z6O9JF_HFT_2021221.Repository
             entityToUpdate.BodyStyle = entity.BodyStyle;
             entityToUpdate.Color = entity.Color;
             entityToUpdate.EngineCode = entity.EngineCode;
-            entityToUpdate.Vin = entity.Vin;
             dataBase.SaveChanges();
         }
     }
