@@ -14,5 +14,19 @@ namespace Z6O9JF_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MechanicId { get; set; }
         public string Name { get; set; }
+
+        [NotMapped]
+        public virtual CarService CarService { get; set; }
+
+        [ForeignKey(nameof(CarService))]
+        public int ServiceNumber { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<Car> Cars { get; set; }
+
+        public Mechanic()
+        {
+            Cars = new HashSet<Car>();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Z6O9JF_HFT_2021221.Data
         public virtual DbSet<Brand> Brand { get; set; }
         public virtual DbSet<Engine> Engine { get; set; }
         public virtual DbSet<Mechanic> Mechanic { get; set; }
-        public virtual DbSet<Service> Service { get; set; }
+        public virtual DbSet<CarService> Service { get; set; }
         public virtual DbSet<Owner> Owner { get; set; }
         public MyDbContext()
         {
