@@ -5,17 +5,17 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    public class EngineRepository
+    public class EngineRepository : IEngineRepository
     {
         MyDbContext dataBase;
         public EngineRepository(MyDbContext database)
         {
             this.dataBase = database;
-        }        
+        }
         public IQueryable<Engine> GetAll()
         {
             return dataBase.Engine;
-        }    
+        }
         public void Create(Engine entity)
         {
             dataBase.Engine.Add(entity);

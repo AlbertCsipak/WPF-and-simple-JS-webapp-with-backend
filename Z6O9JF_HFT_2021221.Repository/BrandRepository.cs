@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    public class BrandRepository
+    public class BrandRepository : IBrandRepository
     {
         MyDbContext dataBase;
         public BrandRepository(MyDbContext database)
         {
             this.dataBase = database;
-        }        
+        }
         public IQueryable<Brand> GetAll()
         {
             return dataBase.Brand;

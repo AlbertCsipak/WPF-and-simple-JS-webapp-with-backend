@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    public class CarRepository
+    public class CarRepository : ICarRepository
     {
         MyDbContext dataBase;
         public CarRepository(MyDbContext database)
@@ -24,7 +24,7 @@ namespace Z6O9JF_HFT_2021221.Repository
         public Car Read(int id)
         {
             return dataBase.Car.FirstOrDefault(entity => entity.Vin == id);
-        }        
+        }
         public void Update(Car entity)
         {
             var entityToUpdate = Read(entity.Vin);

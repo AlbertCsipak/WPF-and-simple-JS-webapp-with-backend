@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    public class CarServiceRepository
+    public class CarServiceRepository : ICarServiceRepository
     {
         MyDbContext dataBase;
         public CarServiceRepository(MyDbContext database)
         {
             this.dataBase = database;
-        }        
+        }
         public IQueryable<CarService> GetAll()
         {
             return dataBase.Service;
@@ -24,7 +24,7 @@ namespace Z6O9JF_HFT_2021221.Repository
         public CarService Read(int id)
         {
             return dataBase.Service.FirstOrDefault(entity => entity.TaxNumber == id);
-        }        
+        }
         public void Update(CarService entity)
         {
             var entityToUpdate = Read(entity.TaxNumber);

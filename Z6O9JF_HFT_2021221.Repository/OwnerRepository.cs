@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    public class OwnerRepository
+    public class OwnerRepository : IOwnerRepository
     {
         MyDbContext dataBase;
         public OwnerRepository(MyDbContext database)
         {
             this.dataBase = database;
-        }        
+        }
         public IQueryable<Owner> GetAll()
         {
             return dataBase.Owner;

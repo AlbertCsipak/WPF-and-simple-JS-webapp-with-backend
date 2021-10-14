@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    public class MechanicRepository
+    public class MechanicRepository : IMechanicRepository
     {
         MyDbContext dataBase;
         public MechanicRepository(MyDbContext database)
         {
             this.dataBase = database;
-        }        
+        }
         public IQueryable<Mechanic> GetAll()
         {
             return dataBase.Mechanic;
