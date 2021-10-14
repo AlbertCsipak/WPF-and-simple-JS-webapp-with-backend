@@ -18,7 +18,14 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Owner entity)
         {
-            myRepository.Create(entity);
+            if (entity.OwnerId<1)
+            {
+                throw new ArgumentException("Incorrect OwnerId");
+            }
+            else
+            {
+                myRepository.Create(entity);
+            }
         }
         public Owner Read(int id)
         {
