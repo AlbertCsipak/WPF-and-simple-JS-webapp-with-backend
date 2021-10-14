@@ -18,7 +18,18 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Engine entity)
         {
-            myRepository.Create(entity);
+            if (entity.BrandId<1)
+            {
+                throw new ArgumentException("Incorrect BrandId");
+            }
+            else if (entity.EngineCode.ToString().Length!=7)
+            {
+                throw new ArgumentException("Incorrect Engine Code");
+            }
+            else
+            {
+                myRepository.Create(entity);
+            }
         }
         public Engine Read(int id)
         {
