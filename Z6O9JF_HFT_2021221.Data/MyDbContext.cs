@@ -13,5 +13,14 @@ namespace Z6O9JF_HFT_2021221.Data
         {
             this.Database.EnsureCreated();
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder dbBuilder)
+        {
+            if (!dbBuilder.IsConfigured)
+            {
+                string conn =@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+                dbBuilder.UseLazyLoadingProxies();
+                dbBuilder.UseSqlServer(conn);
+            }
+        }
     }
 }
