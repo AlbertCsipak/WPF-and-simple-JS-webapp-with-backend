@@ -5,7 +5,7 @@ using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    public class OwnerLogic
+    public class OwnerLogic : IOwnerLogic
     {
         IOwnerRepository myRepository;
         public OwnerLogic(IOwnerRepository entity)
@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Owner entity)
         {
-            if (entity.OwnerId<1)
+            if (entity.OwnerId < 1)
             {
                 throw new ArgumentException("Incorrect OwnerId");
             }

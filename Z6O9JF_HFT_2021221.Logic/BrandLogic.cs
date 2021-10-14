@@ -5,20 +5,20 @@ using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    public class BrandLogic
+    public class BrandLogic : IBrandLogic
     {
         IBrandRepository myRepository;
         public BrandLogic(IBrandRepository entity)
         {
             this.myRepository = entity;
-        }        
+        }
         public IEnumerable<Brand> GetAll()
         {
             return myRepository.GetAll();
-        }   
+        }
         public void Create(Brand entity)
         {
-            if (entity.BrandId<1)
+            if (entity.BrandId < 1)
             {
                 throw new ArgumentException("Incorrect BrandId");
             }

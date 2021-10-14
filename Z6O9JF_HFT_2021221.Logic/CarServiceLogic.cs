@@ -5,7 +5,7 @@ using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    public class CarServiceLogic
+    public class CarServiceLogic : ICarServiceLogic
     {
         ICarServiceRepository myRepository;
         public CarServiceLogic(ICarServiceRepository entity)
@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(CarService entity)
         {
-            if (entity.TaxNumber.ToString().Length!=4)
+            if (entity.TaxNumber.ToString().Length != 4)
             {
                 throw new ArgumentException("Incorrect Tax Number");
             }

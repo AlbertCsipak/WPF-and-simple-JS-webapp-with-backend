@@ -5,7 +5,7 @@ using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    public class EngineLogic
+    public class EngineLogic : IEngineLogic
     {
         IEngineRepository myRepository;
         public EngineLogic(IEngineRepository entity)
@@ -18,11 +18,11 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Engine entity)
         {
-            if (entity.BrandId<1)
+            if (entity.BrandId < 1)
             {
                 throw new ArgumentException("Incorrect BrandId");
             }
-            else if (entity.EngineCode.ToString().Length!=7)
+            else if (entity.EngineCode.ToString().Length != 7)
             {
                 throw new ArgumentException("Incorrect Engine Code");
             }
