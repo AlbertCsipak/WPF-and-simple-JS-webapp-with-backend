@@ -7,7 +7,7 @@ namespace Z6O9JF_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            MyDbContext db = new MyDbContext();
+            MyDbContext db = new();
             db.SaveChanges();
             ;
         }

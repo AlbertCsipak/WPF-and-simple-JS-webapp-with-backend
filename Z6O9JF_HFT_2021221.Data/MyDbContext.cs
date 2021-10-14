@@ -80,27 +80,27 @@ namespace Z6O9JF_HFT_2021221.Data
                 .OnDelete(DeleteBehavior.Restrict);
             });
 
-            CarService ServiceOne = new CarService(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 583729174 };
+            CarService ServiceOne = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 583729174 };
 
-            Mechanic m1 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
-            Mechanic m2 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };
-            Mechanic m3 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Ádám", MechanicId = 3 };
-            Mechanic m4 = new Mechanic() { ServiceId = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
+            Mechanic m1 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
+            Mechanic m2 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };
+            Mechanic m3 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Ádám", MechanicId = 3 };
+            Mechanic m4 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
 
-            Owner o1 = new Owner() { Name = "Géza", OwnerId = 1 };
-            Owner o2 = new Owner() { Name = "Béla", OwnerId = 2 };
-            Owner o3 = new Owner() { Name = "Dániel", OwnerId = 3 };
+            Owner o1 = new() { Name = "Géza", OwnerId = 1 };
+            Owner o2 = new() { Name = "Béla", OwnerId = 2 };
+            Owner o3 = new() { Name = "Dániel", OwnerId = 3 };
 
-            Brand audi = new Brand() { Name = "Audi", Location = "Germany", BrandId = 1 };
-            Brand vw = new Brand() { Name = "VW", Location = "Germany", BrandId = 8 };
-            Brand bmw = new Brand() { Name = "BMW", Location = "Germany", BrandId = 2 };
-            Brand mercedes = new Brand() { Name = "Mercedes", Location = "Germany", BrandId = 3 };
-            Brand honda = new Brand() { Name = "Honda", Location = "Japan", BrandId = 4 };
-            Brand peugeot = new Brand() { Name = "Peugeot", Location = "France", BrandId = 5 };
-            Brand hyundai = new Brand() { Name = "Hyundai", Location = "SouthKorea", BrandId = 6 };
-            Brand chevrolet = new Brand() { Name = "Chevrolet", Location = "USA", BrandId = 7 };
+            Brand audi = new() { Name = "Audi", Location = "Germany", BrandId = 1 };
+            Brand vw = new() { Name = "VW", Location = "Germany", BrandId = 8 };
+            Brand bmw = new() { Name = "BMW", Location = "Germany", BrandId = 2 };
+            Brand mercedes = new() { Name = "Mercedes", Location = "Germany", BrandId = 3 };
+            Brand honda = new() { Name = "Honda", Location = "Japan", BrandId = 4 };
+            Brand peugeot = new() { Name = "Peugeot", Location = "France", BrandId = 5 };
+            Brand hyundai = new() { Name = "Hyundai", Location = "SouthKorea", BrandId = 6 };
+            Brand chevrolet = new() { Name = "Chevrolet", Location = "USA", BrandId = 7 };
 
-            Engine h1 = new Engine() 
+            Engine h1 = new() 
             { 
                 BrandId = honda.BrandId, 
                 Displacement = 1688, 
@@ -108,7 +108,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 EngineType = Enums.EngineType.Gasoline, 
                 EngineCode = 12742322 
             };
-            Engine h2 = new Engine()
+            Engine h2 = new()
             {
                 BrandId = honda.BrandId,
                 Displacement = 1688,
@@ -116,7 +116,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 EngineType = Enums.EngineType.Petrol,
                 EngineCode = 6748974
             };
-            Engine vw1 = new Engine()
+            Engine vw1 = new()
             {
                 BrandId = vw.BrandId,
                 Displacement = 1896,
@@ -124,7 +124,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 EngineType = Enums.EngineType.Gasoline,
                 EngineCode = 5123123
             };
-            Engine vw2 = new Engine()
+            Engine vw2 = new()
             {
                 BrandId = vw.BrandId,
                 Displacement = 1388,
@@ -132,7 +132,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 EngineType = Enums.EngineType.Petrol,
                 EngineCode = 9846372
             };
-            Engine audi1 = new Engine()
+            Engine audi1 = new()
             {
                 BrandId = audi.BrandId,
                 Displacement = 2480,
@@ -141,7 +141,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 EngineCode = 1968473
             };
 
-            Car c1 = new Car()
+            Car c1 = new()
             {
                 BodyStyle = Enums.BodyStyleEnum.Hatchback,
                 BrandId = audi.BrandId,
@@ -152,7 +152,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 OwnerId = o1.OwnerId,
                 Model = "A3"
             };
-            Car c2 = new Car()
+            Car c2 = new()
             {
                 BodyStyle = Enums.BodyStyleEnum.Hatchback,
                 BrandId = vw.BrandId,
@@ -163,7 +163,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 OwnerId = o2.OwnerId,
                 Model = "Golf mk 7"
             };
-            Car c3 = new Car()
+            Car c3 = new()
             {
                 BodyStyle = Enums.BodyStyleEnum.Hatchback,
                 BrandId = honda.BrandId,
@@ -174,7 +174,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 OwnerId = o3.OwnerId,
                 Model = "Golf mk 7"
             };
-            Car c4 = new Car()
+            Car c4 = new()
             {
                 BodyStyle = Enums.BodyStyleEnum.Sedan,
                 BrandId = audi.BrandId,
