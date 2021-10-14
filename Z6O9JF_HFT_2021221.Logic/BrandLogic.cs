@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using Z6O9JF_HFT_2021221.Repository;
+using Z6O9JF_HFT_2021221.Models;
+
+namespace Z6O9JF_HFT_2021221.Logic
+{
+    public class BrandLogic
+    {
+        IBrandRepository myRepository;
+        public BrandLogic(IBrandRepository entity)
+        {
+            this.myRepository = entity;
+        }        
+        public IEnumerable<Brand> GetAll()
+        {
+            return myRepository.GetAll();
+        }   
+        public void Create(Brand entity)
+        {
+            myRepository.Create(entity);
+        }
+        public Brand Read(int id)
+        {
+            return myRepository.Read(id);
+        }
+        public void Update(Brand brand)
+        {
+            myRepository.Update(brand);
+        }
+        public void Delete(int id)
+        {
+            myRepository.Delete(id);
+        }
+    }
+}
