@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    class EngineRepository
+    public class EngineRepository
     {
         MyDbContext dataBase;
 

@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using Z6O9JF_HFT_2021221.Data;
+using Z6O9JF_HFT_2021221.Models;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Z6O9JF_HFT_2021221.Repository
 {
-    class OwnerRepository
+    public class OwnerRepository
     {
+
     }
 }
