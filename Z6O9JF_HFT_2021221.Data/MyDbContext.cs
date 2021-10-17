@@ -81,10 +81,11 @@ namespace Z6O9JF_HFT_2021221.Data
             });
 
             CarService ServiceOne = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
+            CarService ServiceTwo = new() { Location = "UK", Name = "Bro Ken Carservice", TaxNumber = 1134 };
 
             Mechanic m1 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
             Mechanic m2 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };
-            Mechanic m3 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Ádám", MechanicId = 3 };
+            Mechanic m3 = new() { ServiceId = ServiceTwo.TaxNumber, Name = "Ádám", MechanicId = 3 };
             Mechanic m4 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
 
             Owner o1 = new() { Name = "Géza", OwnerId = 1 };
@@ -147,7 +148,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = audi.BrandId,
                 Color = Enums.ColorEnum.Black,
                 EngineCode = vw1.EngineCode,
-                MechanicId = m1.MechanicId,
+                MechanicId = m3.MechanicId,
                 Vin = 563821741,
                 OwnerId = o1.OwnerId,
                 Model = "A3",
@@ -190,7 +191,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 ServiceCost = 1500
             };
 
-            modelBuilder.Entity<CarService>().HasData(ServiceOne);
+            modelBuilder.Entity<CarService>().HasData(ServiceOne,ServiceTwo);
             modelBuilder.Entity<Mechanic>().HasData(m1,m2,m3);
             modelBuilder.Entity<Owner>().HasData(o1,o2,o3);
             modelBuilder.Entity<Brand>().HasData(bmw, vw, audi,mercedes,honda,peugeot,hyundai,chevrolet);
