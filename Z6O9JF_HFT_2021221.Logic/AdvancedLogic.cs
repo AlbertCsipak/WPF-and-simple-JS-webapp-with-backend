@@ -51,25 +51,38 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public IEnumerable<KeyValuePair<string, List<Brand>>> CarBrandsInService()
         {
-            var a1 = carRepo.GetAll().AsEnumerable().GroupBy(car => car.Mechanic.CarService.Name);
+            var cars = carRepo.GetAll().AsEnumerable().GroupBy(car => car.Mechanic.CarService.Name);
+            Dictionary<string, List<Brand>> services = new();
 
-            List<Brand> brands = new();
-            List<KeyValuePair<string, List<Brand>>> services = new();
-
-            foreach (var item in a1)
+            foreach (var car in cars)
             {
-                foreach (var item1 in item)
+                List<Brand> brands = new();
+                foreach (var car1 in car)
                 {
-                    if (!brands.Contains(item1.Brand))
+                    if (!brands.Contains(car1.Brand))
                     {
-                        brands.Add(item1.Brand);
+                        brands.Add(car1.Brand);
                     }
                 }
-                services.Add(new KeyValuePair<string, List<Brand>>(item.Key, brands));
-                brands = null;
+                services.Add(car.Key, brands);
             }
-            ;
             return services;
+        }
+        public IEnumerable<KeyValuePair<string, List<Enums.EngineType>>> MechanicEngineTypeCount() 
+        {
+            var mechanics = carRepo.GetAll().AsEnumerable().GroupBy(mechanic => mechanic.Mechanic.Name);
+            Dictionary<string, List<Enums.EngineType>> mechanicDic = new();
+
+            foreach (var mechanic in mechanics)
+            {
+                List<Enums.EngineType> engineType = new();
+                foreach (var car in mechanic)
+                {
+                    engineType.Add(car.Engine.EngineType);
+                }
+                mechanicDic.Add(mechanic.Key, engineType);
+            }
+            return mechanicDic;
         }
     }
 }
