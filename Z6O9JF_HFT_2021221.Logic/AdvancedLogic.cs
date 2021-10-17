@@ -68,17 +68,25 @@ namespace Z6O9JF_HFT_2021221.Logic
             }
             return services;
         }
-        public IEnumerable<KeyValuePair<string, List<Enums.EngineType>>> MechanicEngineTypeCount() 
+        public IEnumerable<KeyValuePair<string, Dictionary<Enums.EngineType,int>>> MechanicEngineTypeCount() 
         {
             var mechanics = carRepo.GetAll().AsEnumerable().GroupBy(mechanic => mechanic.Mechanic.Name);
-            Dictionary<string, List<Enums.EngineType>> mechanicDic = new();
+            Dictionary<string, Dictionary<Enums.EngineType,int>> mechanicDic = new();
 
             foreach (var mechanic in mechanics)
             {
-                List<Enums.EngineType> engineType = new();
+                Dictionary<Enums.EngineType,int> engineType = new();
+                int engineCount = 1;
                 foreach (var car in mechanic)
                 {
-                    engineType.Add(car.Engine.EngineType);
+                    if (!engineType.ContainsKey(car.Engine.EngineType))
+                    {
+                        engineType.Add(car.Engine.EngineType,engineCount);
+                    }
+                    else
+                    {
+                        engineType[car.Engine.EngineType]++;
+                    }
                 }
                 mechanicDic.Add(mechanic.Key, engineType);
             }
