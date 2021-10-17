@@ -39,6 +39,8 @@ namespace Z6O9JF_HFT_2021221.Client
             //var a4 = advanced.ServiceIncome();
 
             var a5 = advanced.CarBrandsInService();
+
+            var a6 = advanced.MechanicEngineTypeCount();
             ;
         }
     }
