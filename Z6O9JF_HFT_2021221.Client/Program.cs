@@ -27,20 +27,18 @@ namespace Z6O9JF_HFT_2021221.Client
             //});
             //var a2 = carRepo.GetAll();
 
-            AdvancedLogic advanced = new(new BrandRepository(db), new CarRepository(db), new MechanicRepository(db), new OwnerRepository(db),
-                new CarServiceRepository(db), new EngineRepository(db));
+            AdvancedLogic advanced = new(new BrandRepository(db), new CarRepository(db), new MechanicRepository(db), 
+                new OwnerRepository(db), new CarServiceRepository(db), new EngineRepository(db));
 
-            //var a1 = advanced.AVGServiceCostByBrands();
+            var a1 = advanced.AVGServiceCostByBrands();
 
-            //var a2 = advanced.HorsePower();
-
-            //var a3 = advanced.MostCommonEngineType();
-
-            //var a4 = advanced.ServiceIncome();
+            var a4 = advanced.ServiceIncome();
 
             var a5 = advanced.CarBrandsInService();
 
             var a6 = advanced.MechanicEngineTypeCount();
+
+            var a7 = advanced.EveryCarWithMoreThan110HP();
             ;
         }
     }

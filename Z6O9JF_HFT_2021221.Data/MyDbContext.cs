@@ -80,123 +80,186 @@ namespace Z6O9JF_HFT_2021221.Data
                 .OnDelete(DeleteBehavior.Restrict);
             });
 
-            CarService ServiceOne = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
-            CarService ServiceTwo = new() { Location = "UK", Name = "Bro Ken Carservice", TaxNumber = 1134 };
+            CarService s1 = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
+            CarService s2 = new() { Location = "UK", Name = "Bro Ken Carservice", TaxNumber = 1134 };
 
-            Mechanic m1 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Béla", MechanicId = 1 };
-            Mechanic m2 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Géza", MechanicId = 2 };
-            Mechanic m3 = new() { ServiceId = ServiceTwo.TaxNumber, Name = "Ádám", MechanicId = 3 };
-            Mechanic m4 = new() { ServiceId = ServiceOne.TaxNumber, Name = "Robi", MechanicId = 4 };
+            Mechanic m1 = new() { ServiceId = s1.TaxNumber, Name = "Béla", MechanicId = 1 };
+            Mechanic m2 = new() { ServiceId = s2.TaxNumber, Name = "Géza", MechanicId = 2 };
+            Mechanic m3 = new() { ServiceId = s1.TaxNumber, Name = "Ádám", MechanicId = 3 };
+            Mechanic m4 = new() { ServiceId = s2.TaxNumber, Name = "Robi", MechanicId = 4 };
 
             Owner o1 = new() { Name = "Géza", OwnerId = 1 };
             Owner o2 = new() { Name = "Béla", OwnerId = 2 };
             Owner o3 = new() { Name = "Dániel", OwnerId = 3 };
 
-            Brand audi = new() { Name = "Audi", Location = "Germany", BrandId = 1 };
-            Brand vw = new() { Name = "VW", Location = "Germany", BrandId = 8 };
-            Brand bmw = new() { Name = "BMW", Location = "Germany", BrandId = 2 };
-            Brand mercedes = new() { Name = "Mercedes", Location = "Germany", BrandId = 3 };
-            Brand honda = new() { Name = "Honda", Location = "Japan", BrandId = 4 };
-            Brand peugeot = new() { Name = "Peugeot", Location = "France", BrandId = 5 };
-            Brand hyundai = new() { Name = "Hyundai", Location = "SouthKorea", BrandId = 6 };
-            Brand chevrolet = new() { Name = "Chevrolet", Location = "USA", BrandId = 7 };
+            Brand b1 = new() { Name = "Audi", Location = "Germany", BrandId = 1 };
+            Brand b2 = new() { Name = "VW", Location = "Germany", BrandId = 8 };
+            Brand b3 = new() { Name = "BMW", Location = "Germany", BrandId = 2 };
+            Brand b4 = new() { Name = "Mercedes", Location = "Germany", BrandId = 3 };
+            Brand b5 = new() { Name = "Honda", Location = "Japan", BrandId = 4 };
+            Brand b6 = new() { Name = "Peugeot", Location = "France", BrandId = 5 };
+            Brand b7 = new() { Name = "Hyundai", Location = "SouthKorea", BrandId = 6 };
+            Brand b8 = new() { Name = "Chevrolet", Location = "USA", BrandId = 7 };
 
-            Engine h1 = new() 
+            Engine e1 = new() 
             { 
-                BrandId = honda.BrandId, 
+                BrandId = b5.BrandId, 
                 Displacement = 1688, 
                 Power = 100, 
                 EngineType = Enums.EngineType.Gasoline, 
                 EngineCode = 1274232
             };
-            Engine h2 = new()
+            Engine e2 = new()
             {
-                BrandId = honda.BrandId,
+                BrandId = b5.BrandId,
                 Displacement = 1688,
                 Power = 130,
                 EngineType = Enums.EngineType.Petrol,
                 EngineCode = 6748974
             };
-            Engine vw1 = new()
+            Engine e3 = new()
             {
-                BrandId = vw.BrandId,
+                BrandId = b2.BrandId,
                 Displacement = 1896,
                 Power = 105,
                 EngineType = Enums.EngineType.Gasoline,
                 EngineCode = 5123123
             };
-            Engine vw2 = new()
+            Engine e4 = new()
             {
-                BrandId = vw.BrandId,
+                BrandId = b2.BrandId,
                 Displacement = 1388,
                 Power = 122,
                 EngineType = Enums.EngineType.Petrol,
                 EngineCode = 9846372
             };
-            Engine audi1 = new()
+            Engine e5 = new()
             {
-                BrandId = audi.BrandId,
+                BrandId = b1.BrandId,
                 Displacement = 2480,
                 Power = 400,
                 EngineType = Enums.EngineType.Petrol,
                 EngineCode = 1968473
             };
 
+            List<Car> carList = new();
+
             Car c1 = new()
             {
-                BodyStyle = Enums.BodyStyleEnum.Hatchback,
-                BrandId = audi.BrandId,
-                Color = Enums.ColorEnum.Black,
-                EngineCode = vw1.EngineCode,
-                MechanicId = m3.MechanicId,
-                Vin = 563821741,
-                OwnerId = o1.OwnerId,
-                Model = "A3",
-                ServiceCost = 300
+                BrandId = b8.BrandId,
+                EngineCode = e3.EngineCode,
+                MechanicId = m4.MechanicId,
+                Vin = 886144430,
+                OwnerId = o3.OwnerId,
+                ServiceCost = 1700
             };
+            carList.Add(c1);
+
             Car c2 = new()
             {
-                BodyStyle = Enums.BodyStyleEnum.Hatchback,
-                BrandId = vw.BrandId,
-                Color = Enums.ColorEnum.Blue,
-                EngineCode = vw2.EngineCode,
-                MechanicId = m2.MechanicId,
-                Vin = 563141741,
-                OwnerId = o2.OwnerId,
-                Model = "Golf mk 7",
-                ServiceCost = 600
+                BrandId = b3.BrandId,
+                EngineCode = e1.EngineCode,
+                MechanicId = m1.MechanicId,
+                Vin = 476958188,
+                OwnerId = o1.OwnerId,
+                ServiceCost = 3500
             };
+            carList.Add(c2);
+
             Car c3 = new()
             {
-                BodyStyle = Enums.BodyStyleEnum.Hatchback,
-                BrandId = honda.BrandId,
-                Color = Enums.ColorEnum.White,
-                EngineCode = h1.EngineCode,
-                MechanicId = m3.MechanicId,
-                Vin = 993141741,
-                OwnerId = o3.OwnerId,
-                Model = "Civic gen7",
-                ServiceCost = 150
+                BrandId = b3.BrandId,
+                EngineCode = e4.EngineCode,
+                MechanicId = m1.MechanicId,
+                Vin = 726486262,
+                OwnerId = o2.OwnerId,
+                ServiceCost = 200
             };
+            carList.Add(c3);
+
             Car c4 = new()
             {
-                BodyStyle = Enums.BodyStyleEnum.Sedan,
-                BrandId = audi.BrandId,
-                Color = Enums.ColorEnum.Red,
-                EngineCode = audi1.EngineCode,
-                MechanicId = m2.MechanicId,
-                Vin = 993144567,
+                BrandId = b8.BrandId,
+                EngineCode = e1.EngineCode,
+                MechanicId = m3.MechanicId,
+                Vin = 287686963,
                 OwnerId = o1.OwnerId,
-                Model = "RS3",
-                ServiceCost = 1500
+                ServiceCost = 900
             };
+            carList.Add(c4);
 
-            modelBuilder.Entity<CarService>().HasData(ServiceOne,ServiceTwo);
-            modelBuilder.Entity<Mechanic>().HasData(m1,m2,m3);
+            Car c5 = new()
+            {
+                BrandId = b7.BrandId,
+                EngineCode = e4.EngineCode,
+                MechanicId = m3.MechanicId,
+                Vin = 785422199,
+                OwnerId = o1.OwnerId,
+                ServiceCost = 2000
+            };
+            carList.Add(c5);
+
+            Car c6 = new()
+            {
+                BrandId = b5.BrandId,
+                EngineCode = e5.EngineCode,
+                MechanicId = m2.MechanicId,
+                Vin = 614342478,
+                OwnerId = o3.OwnerId,
+                ServiceCost = 3300
+            };
+            carList.Add(c6);
+
+            Car c7 = new()
+            {
+                BrandId = b3.BrandId,
+                EngineCode = e4.EngineCode,
+                MechanicId = m1.MechanicId,
+                Vin = 261246868,
+                OwnerId = o2.OwnerId,
+                ServiceCost = 3400
+            };
+            carList.Add(c7);
+
+            Car c8 = new()
+            {
+                BrandId = b5.BrandId,
+                EngineCode = e1.EngineCode,
+                MechanicId = m1.MechanicId,
+                Vin = 152599871,
+                OwnerId = o1.OwnerId,
+                ServiceCost = 300
+            };
+            carList.Add(c8);
+
+            Car c9 = new()
+            {
+                BrandId = b1.BrandId,
+                EngineCode = e3.EngineCode,
+                MechanicId = m2.MechanicId,
+                Vin = 417037113,
+                OwnerId = o3.OwnerId,
+                ServiceCost = 200
+            };
+            carList.Add(c9);
+
+            Car c10 = new()
+            {
+                BrandId = b3.BrandId,
+                EngineCode = e2.EngineCode,
+                MechanicId = m2.MechanicId,
+                Vin = 187238463,
+                OwnerId = o2.OwnerId,
+                ServiceCost = 900
+            };
+            carList.Add(c10);
+
+            modelBuilder.Entity<CarService>().HasData(s1,s2);
+            modelBuilder.Entity<Mechanic>().HasData(m1,m2,m3,m4);
             modelBuilder.Entity<Owner>().HasData(o1,o2,o3);
-            modelBuilder.Entity<Brand>().HasData(bmw, vw, audi,mercedes,honda,peugeot,hyundai,chevrolet);
-            modelBuilder.Entity<Engine>().HasData(h1,h2,vw1,vw2,audi1);
-            modelBuilder.Entity<Car>().HasData(c1,c2,c3,c4);
+            modelBuilder.Entity<Brand>().HasData(b1,b2,b3,b4,b5,b6,b7,b8);
+            modelBuilder.Entity<Engine>().HasData(e1,e2,e3,e4,e5);
+            modelBuilder.Entity<Car>().HasData(carList);
         }
     }
 }
