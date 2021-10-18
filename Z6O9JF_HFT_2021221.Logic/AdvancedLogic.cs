@@ -32,17 +32,6 @@ namespace Z6O9JF_HFT_2021221.Logic
                    group car by car.Brand.Name into carg
                    select new KeyValuePair<string, double>(carg.Key, carg.Average(car => car.ServiceCost));
         }
-        public IEnumerable<KeyValuePair<Enums.EngineType, int>> MostCommonEngineType()
-        {
-            return from engine in engineRepo.GetAll()
-                   group engine by engine.EngineType into engineg
-                   select new KeyValuePair<Enums.EngineType, int>(engineg.Key, engineg.Count());
-        }
-        public IEnumerable<KeyValuePair<int, double>> HorsePower()
-        {
-            return from car in carRepo.GetAll()
-                   select new KeyValuePair<int, double>(car.Vin, car.Engine.Power);
-        }
         public IEnumerable<KeyValuePair<string,double>> ServiceIncome()
         {
             return from car in carRepo.GetAll()
@@ -91,6 +80,25 @@ namespace Z6O9JF_HFT_2021221.Logic
                 mechanicDic.Add(mechanic.Key, engineType);
             }
             return mechanicDic;
+        }
+        public IEnumerable<KeyValuePair<string, Dictionary<int, int>>> EveryCarWithMoreThan110HP()
+        {
+            var cars = carRepo.GetAll().AsEnumerable().GroupBy(car => car.Brand.Name);
+            Dictionary<string, Dictionary<int, int>> outDic = new();
+
+            foreach (var car in cars)
+            {
+                Dictionary<int, int> carDic = new();
+                foreach (var car1 in car)
+                {
+                    if (!carDic.ContainsKey(car1.Vin) && car1.Engine.Power > 110)
+                    {
+                        carDic.Add(car1.Vin, car1.Engine.Power);
+                    }
+                }
+                outDic.Add(car.Key, carDic);
+            }
+            return outDic;
         }
     }
 }
