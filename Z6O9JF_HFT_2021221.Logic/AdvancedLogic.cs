@@ -8,22 +8,22 @@ namespace Z6O9JF_HFT_2021221.Logic
 {
     public class AdvancedLogic
     {
-        IBrandRepository brandRepo;
         ICarRepository carRepo;
-        IMechanicRepository mechanicRepo;
-        IOwnerRepository ownerRepo;
-        ICarServiceRepository carServiceRepo;
-        IEngineRepository engineRepo;
+        //IBrandRepository brandRepo;
+        //IMechanicRepository mechanicRepo;
+        //IOwnerRepository ownerRepo;
+        //ICarServiceRepository carServiceRepo;
+        //IEngineRepository engineRepo;
 
-        public AdvancedLogic(IBrandRepository brandRepository, ICarRepository carRepository, IMechanicRepository mechanicRepository,
-            IOwnerRepository ownerRepository, ICarServiceRepository carServiceRepository, IEngineRepository engineRepository)
+        public AdvancedLogic(ICarRepository carRepository/*,IBrandRepository brandRepository, IMechanicRepository mechanicRepository,
+            IOwnerRepository ownerRepository, ICarServiceRepository carServiceRepository, IEngineRepository engineRepository*/)
         {
-            this.brandRepo = brandRepository;
             this.carRepo = carRepository;
-            this.mechanicRepo = mechanicRepository;
-            this.ownerRepo = ownerRepository;
-            this.carServiceRepo = carServiceRepository;
-            this.engineRepo = engineRepository;
+            //this.brandRepo = brandRepository;
+            //this.mechanicRepo = mechanicRepository;
+            //this.ownerRepo = ownerRepository;
+            //this.carServiceRepo = carServiceRepository;
+            //this.engineRepo = engineRepository;
         }
 
         public IEnumerable<KeyValuePair<string, double>> AVGServiceCostByBrands()
