@@ -2,7 +2,6 @@
 using Z6O9JF_HFT_2021221.Repository;
 using Z6O9JF_HFT_2021221.Logic;
 using Z6O9JF_HFT_2021221.Models;
-using Z6O9JF_HFT_2021221.Data;
 using NUnit.Framework;
 using Moq;
 using System.Collections.Generic;
@@ -13,13 +12,13 @@ namespace Z6O9JF_HFT_2021221.Test
     [TestFixture]
     public class Test
     {
-        AdvancedLogic advancedLogic;
-        CarLogic carLogic;
+        IAdvancedLogic advancedLogic;
+        ICarLogic carLogic;
 
         [SetUp]
         public void MockSetup()
         {
-            var mockCarRepository =new Mock<ICarRepository>();
+            var mockCarRepository = new Mock<ICarRepository>();
 
             Brand fakeBrand = new Brand();
             fakeBrand.BrandId = 1;
@@ -68,13 +67,13 @@ namespace Z6O9JF_HFT_2021221.Test
         {
             var result = advancedLogic.AVGServiceCostByBrands();
 
-            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750)};
+            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750) };
 
             Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
-        public void GetAllTest() 
+        public void GetAllTest()
         {
             var result = carLogic.GetAll();
 
@@ -82,10 +81,10 @@ namespace Z6O9JF_HFT_2021221.Test
         }
 
         [Test]
-        public void CreateVinLengthTest() 
+        public void CarLogicCreateTest()
         {
             Car testCar = new();
-            testCar.Vin = 31234678;
+            testCar.Vin = 3;
 
             Assert.Throws<ArgumentException>(() => carLogic.Create(testCar)); //stack#933613
         }

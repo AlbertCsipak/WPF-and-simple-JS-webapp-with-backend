@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
-    public class AdvancedLogic
+    public class AdvancedLogic : IAdvancedLogic
     {
         ICarRepository carRepo;
         //IBrandRepository brandRepo;
@@ -32,7 +32,7 @@ namespace Z6O9JF_HFT_2021221.Logic
                    group car by car.Brand.Name into carg
                    select new KeyValuePair<string, double>(carg.Key, carg.Average(car => car.ServiceCost));
         }
-        public IEnumerable<KeyValuePair<string,double>> ServiceIncome()
+        public IEnumerable<KeyValuePair<string, double>> ServiceIncome()
         {
             return from car in carRepo.GetAll()
                    group car by car.Mechanic.CarService.Name into carg
@@ -57,20 +57,20 @@ namespace Z6O9JF_HFT_2021221.Logic
             }
             return services;
         }
-        public IEnumerable<KeyValuePair<string, Dictionary<Enums.EngineType,int>>> MechanicEngineTypeCount() 
+        public IEnumerable<KeyValuePair<string, Dictionary<Enums.EngineType, int>>> MechanicEngineTypeCount()
         {
             var mechanics = carRepo.GetAll().AsEnumerable().GroupBy(mechanic => mechanic.Mechanic.Name);
-            Dictionary<string, Dictionary<Enums.EngineType,int>> mechanicDic = new();
+            Dictionary<string, Dictionary<Enums.EngineType, int>> mechanicDic = new();
 
             foreach (var mechanic in mechanics)
             {
-                Dictionary<Enums.EngineType,int> engineType = new();
+                Dictionary<Enums.EngineType, int> engineType = new();
                 int engineCount = 1;
                 foreach (var car in mechanic)
                 {
                     if (!engineType.ContainsKey(car.Engine.EngineType))
                     {
-                        engineType.Add(car.Engine.EngineType,engineCount);
+                        engineType.Add(car.Engine.EngineType, engineCount);
                     }
                     else
                     {
