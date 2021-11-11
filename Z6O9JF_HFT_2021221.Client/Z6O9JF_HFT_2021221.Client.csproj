@@ -6,10 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Z6O9JF_HFT_2021221.Data\Z6O9JF_HFT_2021221.Data.csproj" />
-    <ProjectReference Include="..\Z6O9JF_HFT_2021221.Logic\Z6O9JF_HFT_2021221.Logic.csproj" />
     <ProjectReference Include="..\Z6O9JF_HFT_2021221.Models\Z6O9JF_HFT_2021221.Models.csproj" />
-    <ProjectReference Include="..\Z6O9JF_HFT_2021221.Repository\Z6O9JF_HFT_2021221.Repository.csproj" />
   </ItemGroup>
 
 </Project>

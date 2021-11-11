@@ -3,43 +3,51 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Z6O9JF_HFT_2021221.Data;
+using Z6O9JF_HFT_2021221.Logic;
+using Z6O9JF_HFT_2021221.Models;
+using Z6O9JF_HFT_2021221.Repository;
 
 namespace Z6O9JF_HFT_2021221.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CarController : ControllerBase
     {
-        // GET: api/<CarController>
+        ICarLogic myLogic;
+        public CarController(ICarLogic entity)
+        {
+            myLogic = entity;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Car> Get()
         {
-            return new string[] { "value1", "value2" };
+            return myLogic.GetAll();
         }
 
-        // GET api/<CarController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Car Get(int id)
         {
-            return "value";
+            return myLogic.Read(id);
         }
 
-        // POST api/<CarController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Car value)
         {
+            myLogic.Create(value);
         }
 
-        // PUT api/<CarController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody] Car value)
         {
+            myLogic.Update(value);
         }
 
-        // DELETE api/<CarController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            myLogic.Delete(id);
         }
     }
 }
