@@ -21,12 +21,12 @@ namespace Z6O9JF_HFT_2021221.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbBuilder)
         {
+            //MultipleActiveResultSets = True
             if (!dbBuilder.IsConfigured)
             {
                 string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;
                                     AttachDbFilename=|DataDirectory|\Database.mdf;
-                                    Integrated Security=True;
-                                    MultipleActiveResultSets=True";
+                                    Integrated Security=True;MultipleActiveResultSets = True;";
                 dbBuilder.UseLazyLoadingProxies();
                 dbBuilder.UseSqlServer(connection);
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using Z6O9JF_HFT_2021221.Repository;
 using Z6O9JF_HFT_2021221.Models;
 using System.Linq;
@@ -9,96 +10,62 @@ namespace Z6O9JF_HFT_2021221.Logic
     public class AdvancedLogic : IAdvancedLogic
     {
         ICarRepository carRepo;
-        //IBrandRepository brandRepo;
-        //IMechanicRepository mechanicRepo;
-        //IOwnerRepository ownerRepo;
-        //ICarServiceRepository carServiceRepo;
-        //IEngineRepository engineRepo;
+        IBrandRepository brandRepo;
+        IMechanicRepository mechanicRepo;
+        IOwnerRepository ownerRepo;
+        ICarServiceRepository carServiceRepo;
+        IEngineRepository engineRepo;
 
-        public AdvancedLogic(ICarRepository carRepository/*,IBrandRepository brandRepository, IMechanicRepository mechanicRepository,
-            IOwnerRepository ownerRepository, ICarServiceRepository carServiceRepository, IEngineRepository engineRepository*/)
+        public AdvancedLogic(ICarRepository carRepository, IBrandRepository brandRepository, IMechanicRepository mechanicRepository,
+            IOwnerRepository ownerRepository, ICarServiceRepository carServiceRepository, IEngineRepository engineRepository)
         {
             this.carRepo = carRepository;
-            //this.brandRepo = brandRepository;
-            //this.mechanicRepo = mechanicRepository;
-            //this.ownerRepo = ownerRepository;
-            //this.carServiceRepo = carServiceRepository;
-            //this.engineRepo = engineRepository;
+            this.brandRepo = brandRepository;
+            this.mechanicRepo = mechanicRepository;
+            this.ownerRepo = ownerRepository;
+            this.carServiceRepo = carServiceRepository;
+            this.engineRepo = engineRepository;
         }
 
-        public IEnumerable<KeyValuePair<string, double>> AVGServiceCostByBrands()
+        public IEnumerable<KeyValuePair<string,double>> AVGServiceCostByBrands()
         {
-            return from car in carRepo.GetAll()
-                   group car by car.Brand.Name into carg
-                   select new KeyValuePair<string, double>(carg.Key, carg.Average(car => car.ServiceCost));
-        }
-        public IEnumerable<KeyValuePair<string, double>> ServiceIncome()
-        {
-            return from car in carRepo.GetAll()
-                   group car by car.Mechanic.CarService.Name into carg
-                   select new KeyValuePair<string, double>(carg.Key, carg.Sum(entity => entity.ServiceCost));
-        }
-        public IEnumerable<KeyValuePair<string, List<Brand>>> CarBrandsInService()
-        {
-            var cars = carRepo.GetAll().AsEnumerable().GroupBy(car => car.Mechanic.CarService.Name);
-            Dictionary<string, List<Brand>> services = new();
+            return from x in carRepo.GetAll()
+                   group x by x.Brand.Name into g
+                   select new KeyValuePair<string, double>(g.Key, g.Average(t => t.ServiceCost));
 
-            foreach (var car in cars)
-            {
-                List<Brand> brands = new();
-                foreach (var car1 in car)
-                {
-                    if (!brands.Contains(car1.Brand))
-                    {
-                        brands.Add(car1.Brand);
-                    }
-                }
-                services.Add(car.Key, brands);
-            }
-            return services;
         }
-        public IEnumerable<KeyValuePair<string, Dictionary<Enums.EngineType, int>>> MechanicEngineTypeCount()
+        public IEnumerable<KeyValuePair<string, int>> ServiceIncome()
         {
-            var mechanics = carRepo.GetAll().AsEnumerable().GroupBy(mechanic => mechanic.Mechanic.Name);
-            Dictionary<string, Dictionary<Enums.EngineType, int>> mechanicDic = new();
-
-            foreach (var mechanic in mechanics)
-            {
-                Dictionary<Enums.EngineType, int> engineType = new();
-                int engineCount = 1;
-                foreach (var car in mechanic)
-                {
-                    if (!engineType.ContainsKey(car.Engine.EngineType))
-                    {
-                        engineType.Add(car.Engine.EngineType, engineCount);
-                    }
-                    else
-                    {
-                        engineType[car.Engine.EngineType]++;
-                    }
-                }
-                mechanicDic.Add(mechanic.Key, engineType);
-            }
-            return mechanicDic;
+            return from x in carServiceRepo
+                    .GetAll()
+                    .AsEnumerable()
+                   group x by x.Name into g
+                   select new KeyValuePair<string, int>(g.Key, g.SelectMany(t => t.Mechanics).SelectMany(x => x.Cars).Sum(v => v.ServiceCost));
         }
-        public IEnumerable<KeyValuePair<string, Dictionary<int, int>>> EveryCarWithMoreThan110HP()
+        public IEnumerable<KeyValuePair<string,List<string>>> CarBrandsInService()
         {
-            var cars = carRepo.GetAll().AsEnumerable().GroupBy(car => car.Brand.Name);
-            Dictionary<string, Dictionary<int, int>> outDic = new();
+            return from x in carServiceRepo
+                   .GetAll()
+                   .AsEnumerable()
+                   group x by x.Name into g
+                   select new KeyValuePair<string, List<string>>(g.Key, g.SelectMany(t=>t.Mechanics).SelectMany(t=>t.Cars).Select(t=>t.Brand.Name).ToList() );
+        }
+        public IEnumerable<KeyValuePair<string,List<Enums.EngineType>>> MechanicEngineTypes()
+        {
+            return from x in mechanicRepo
+                .GetAll()
+                .AsEnumerable()
+                   group x by x.Name into g
+                   select new KeyValuePair<string, List<Enums.EngineType>>(g.Key, g.SelectMany(y => y.Cars.Select(x => x.Engine.EngineType)).Distinct().ToList());
 
-            foreach (var car in cars)
-            {
-                Dictionary<int, int> carDic = new();
-                foreach (var car1 in car)
-                {
-                    if (!carDic.ContainsKey(car1.Vin) && car1.Engine.Power > 110)
-                    {
-                        carDic.Add(car1.Vin, car1.Engine.Power);
-                    }
-                }
-                outDic.Add(car.Key, carDic);
-            }
-            return outDic;
+        }
+        public IEnumerable<KeyValuePair<string, List<Car>>> OwnersAndTheirStrongestCar()
+        {
+            return from x in ownerRepo
+                .GetAll()
+                .AsEnumerable()
+                   group x by x.Name into g
+                   select new KeyValuePair<string, List<Car>>(g.Key, g.SelectMany(t => t.Cars).OrderByDescending(t=>t.Engine.Power).Take(1).ToList());
         }
     }
 }

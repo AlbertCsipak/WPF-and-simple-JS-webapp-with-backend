@@ -26,18 +26,20 @@ namespace Z6O9JF_HFT_2021221.Client
             //    ServiceCost = 1500
             //});
             //var a2 = carRepo.GetAll();
+            //var a3 = carRepo.Read(886144431);
 
-            AdvancedLogic advanced = new(new CarRepository(db));
+            AdvancedLogic advanced = new(new CarRepository(db),new BrandRepository(db),new MechanicRepository(db),
+                new OwnerRepository(db),new CarServiceRepository(db),new EngineRepository(db));
 
             var a1 = advanced.AVGServiceCostByBrands();
 
-            var a4 = advanced.ServiceIncome();
+            var a2 = advanced.ServiceIncome();
 
-            var a5 = advanced.CarBrandsInService();
+            var a3 = advanced.CarBrandsInService();
 
-            var a6 = advanced.MechanicEngineTypeCount();
+            var a4 = advanced.MechanicEngineTypes();
 
-            var a7 = advanced.EveryCarWithMoreThan110HP();
+            var a5 = advanced.OwnersAndTheirStrongestCar();
             ;
         }
     }
