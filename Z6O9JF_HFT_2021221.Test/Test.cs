@@ -1,11 +1,10 @@
-﻿using System;
-using Z6O9JF_HFT_2021221.Repository;
-using Z6O9JF_HFT_2021221.Logic;
-using Z6O9JF_HFT_2021221.Models;
+﻿using Moq;
 using NUnit.Framework;
-using Moq;
 using System.Collections.Generic;
 using System.Linq;
+using Z6O9JF_HFT_2021221.Logic;
+using Z6O9JF_HFT_2021221.Models;
+using Z6O9JF_HFT_2021221.Repository;
 
 namespace Z6O9JF_HFT_2021221.Test
 {
@@ -181,14 +180,14 @@ namespace Z6O9JF_HFT_2021221.Test
 
             //RepoSetup
             mockCarRepository.Setup(car => car.GetAll()).Returns(cars);
-            mockEngineRepository.Setup(engine =>engine.GetAll()).Returns(engines);
+            mockEngineRepository.Setup(engine => engine.GetAll()).Returns(engines);
             mockBrandRepository.Setup(brand => brand.GetAll()).Returns(brands);
-            mockMechanicRepository.Setup(mechanic=>mechanic.GetAll()).Returns(mechanics);
+            mockMechanicRepository.Setup(mechanic => mechanic.GetAll()).Returns(mechanics);
             mockOwnerRepository.Setup(owner => owner.GetAll()).Returns(owners);
             mockCarServiceRepository.Setup(carservice => carservice.GetAll()).Returns(carServices);
 
-            advancedLogic = new AdvancedLogic(mockCarRepository.Object,mockBrandRepository.Object,mockMechanicRepository.Object,
-                mockOwnerRepository.Object,mockCarServiceRepository.Object,mockEngineRepository.Object);
+            advancedLogic = new AdvancedLogic(mockCarRepository.Object, mockBrandRepository.Object, mockMechanicRepository.Object,
+                mockOwnerRepository.Object, mockCarServiceRepository.Object, mockEngineRepository.Object);
 
             carLogic = new CarLogic(mockCarRepository.Object);
         }
@@ -234,8 +233,8 @@ namespace Z6O9JF_HFT_2021221.Test
         public void AVGServiceCostByBrandsTest()
         {
             var result = advancedLogic.AVGServiceCostByBrands();
-            
-            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750), new KeyValuePair<string, double>("Bmw", 450)}; 
+
+            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750), new KeyValuePair<string, double>("Bmw", 450) };
 
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -255,7 +254,7 @@ namespace Z6O9JF_HFT_2021221.Test
             testCar.Vin = 5;
 
             Assert.That(() => { carLogic.Create(testCar); }, Throws.Exception); //stack#933613
-            
+
         }
     }
 }

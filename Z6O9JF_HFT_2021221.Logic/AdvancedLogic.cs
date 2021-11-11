@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using Z6O9JF_HFT_2021221.Repository;
-using Z6O9JF_HFT_2021221.Models;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Z6O9JF_HFT_2021221.Models;
+using Z6O9JF_HFT_2021221.Repository;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
@@ -27,7 +25,7 @@ namespace Z6O9JF_HFT_2021221.Logic
             this.engineRepo = engineRepository;
         }
 
-        public IEnumerable<KeyValuePair<string,double>> AVGServiceCostByBrands()
+        public IEnumerable<KeyValuePair<string, double>> AVGServiceCostByBrands()
         {
             return from x in carRepo.GetAll()
                    group x by x.Brand.Name into g
@@ -42,15 +40,15 @@ namespace Z6O9JF_HFT_2021221.Logic
                    group x by x.Name into g
                    select new KeyValuePair<string, int>(g.Key, g.SelectMany(t => t.Mechanics).SelectMany(x => x.Cars).Sum(v => v.ServiceCost));
         }
-        public IEnumerable<KeyValuePair<string,List<string>>> CarBrandsInService()
+        public IEnumerable<KeyValuePair<string, List<string>>> CarBrandsInService()
         {
             return from x in carServiceRepo
                    .GetAll()
                    .AsEnumerable()
                    group x by x.Name into g
-                   select new KeyValuePair<string, List<string>>(g.Key, g.SelectMany(t=>t.Mechanics).SelectMany(t=>t.Cars).Select(t=>t.Brand.Name).ToList() );
+                   select new KeyValuePair<string, List<string>>(g.Key, g.SelectMany(t => t.Mechanics).SelectMany(t => t.Cars).Select(t => t.Brand.Name).ToList());
         }
-        public IEnumerable<KeyValuePair<string,List<Enums.EngineType>>> MechanicEngineTypes()
+        public IEnumerable<KeyValuePair<string, List<Enums.EngineType>>> MechanicEngineTypes()
         {
             return from x in mechanicRepo
                 .GetAll()
@@ -65,7 +63,7 @@ namespace Z6O9JF_HFT_2021221.Logic
                 .GetAll()
                 .AsEnumerable()
                    group x by x.Name into g
-                   select new KeyValuePair<string, List<Car>>(g.Key, g.SelectMany(t => t.Cars).OrderByDescending(t=>t.Engine.Power).Take(1).ToList());
+                   select new KeyValuePair<string, List<Car>>(g.Key, g.SelectMany(t => t.Cars).OrderByDescending(t => t.Engine.Power).Take(1).ToList());
         }
     }
 }

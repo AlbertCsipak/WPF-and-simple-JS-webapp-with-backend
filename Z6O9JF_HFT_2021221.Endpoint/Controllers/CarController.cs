@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Z6O9JF_HFT_2021221.Data;
 using Z6O9JF_HFT_2021221.Logic;
 using Z6O9JF_HFT_2021221.Models;
-using Z6O9JF_HFT_2021221.Repository;
 
 namespace Z6O9JF_HFT_2021221.Endpoint.Controllers
 {

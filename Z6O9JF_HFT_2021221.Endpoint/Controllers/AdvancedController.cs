@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Z6O9JF_HFT_2021221.Data;
 using Z6O9JF_HFT_2021221.Logic;
 using Z6O9JF_HFT_2021221.Models;
-using Z6O9JF_HFT_2021221.Repository;
 
 namespace Z6O9JF_HFT_2021221.Endpoint.Controllers
 {
@@ -27,13 +22,13 @@ namespace Z6O9JF_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, List<string>>> CarBrandsInService() 
+        public IEnumerable<KeyValuePair<string, List<string>>> CarBrandsInService()
         {
             return myLogic.CarBrandsInService();
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, List<Car>>> OwnersAndTheirStrongestCar() 
+        public IEnumerable<KeyValuePair<string, List<Car>>> OwnersAndTheirStrongestCar()
         {
             return myLogic.OwnersAndTheirStrongestCar();
         }
@@ -45,7 +40,7 @@ namespace Z6O9JF_HFT_2021221.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, int>> ServiceIncome() 
+        public IEnumerable<KeyValuePair<string, int>> ServiceIncome()
         {
             return myLogic.ServiceIncome();
         }

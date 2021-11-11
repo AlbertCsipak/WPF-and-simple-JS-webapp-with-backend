@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Z6O9JF_HFT_2021221.Repository;
 using Z6O9JF_HFT_2021221.Models;
+using Z6O9JF_HFT_2021221.Repository;
 
 namespace Z6O9JF_HFT_2021221.Logic
 {
@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Brand entity)
         {
-            if (entity.BrandId < 1)
+            if (entity.BrandId < 0)
             {
                 throw new ArgumentException("Incorrect BrandId");
             }

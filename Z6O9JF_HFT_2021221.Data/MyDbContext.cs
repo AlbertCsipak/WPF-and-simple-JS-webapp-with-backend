@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.Data
@@ -71,7 +70,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 entity
                 .HasOne(Mechanic => Mechanic.CarService)
                 .WithMany(Service => Service.Mechanics)
-                .HasForeignKey(Mechanic =>Mechanic.ServiceId)
+                .HasForeignKey(Mechanic => Mechanic.ServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
             });
             modelBuilder.Entity<Engine>(entity =>
@@ -83,7 +82,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 .OnDelete(DeleteBehavior.Restrict);
             });
 
-            CarService s1 = new(){ Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
+            CarService s1 = new() { Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
             CarService s2 = new() { Location = "UK", Name = "Bro Ken Carservice", TaxNumber = 1134 };
 
             Mechanic m1 = new() { ServiceId = s1.TaxNumber, Name = "Béla", MechanicId = 1 };
@@ -104,12 +103,12 @@ namespace Z6O9JF_HFT_2021221.Data
             Brand b7 = new() { Name = "Hyundai", Location = "SouthKorea", BrandId = 6 };
             Brand b8 = new() { Name = "Chevrolet", Location = "USA", BrandId = 7 };
 
-            Engine e1 = new() 
-            { 
-                BrandId = b5.BrandId, 
-                Displacement = 1688, 
-                Power = 100, 
-                EngineType = Enums.EngineType.Gasoline, 
+            Engine e1 = new()
+            {
+                BrandId = b5.BrandId,
+                Displacement = 1688,
+                Power = 100,
+                EngineType = Enums.EngineType.Gasoline,
                 EngineCode = 1274232
             };
             Engine e2 = new()
@@ -257,11 +256,11 @@ namespace Z6O9JF_HFT_2021221.Data
             };
             carList.Add(c10);
 
-            modelBuilder.Entity<CarService>().HasData(s1,s2);
-            modelBuilder.Entity<Mechanic>().HasData(m1,m2,m3,m4);
-            modelBuilder.Entity<Owner>().HasData(o1,o2,o3);
-            modelBuilder.Entity<Brand>().HasData(b1,b2,b3,b4,b5,b6,b7,b8);
-            modelBuilder.Entity<Engine>().HasData(e1,e2,e3,e4,e5);
+            modelBuilder.Entity<CarService>().HasData(s1, s2);
+            modelBuilder.Entity<Mechanic>().HasData(m1, m2, m3, m4);
+            modelBuilder.Entity<Owner>().HasData(o1, o2, o3);
+            modelBuilder.Entity<Brand>().HasData(b1, b2, b3, b4, b5, b6, b7, b8);
+            modelBuilder.Entity<Engine>().HasData(e1, e2, e3, e4, e5);
             modelBuilder.Entity<Car>().HasData(carList);
         }
     }
