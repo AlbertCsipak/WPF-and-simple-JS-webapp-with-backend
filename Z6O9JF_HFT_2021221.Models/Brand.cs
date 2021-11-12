@@ -14,11 +14,9 @@ namespace Z6O9JF_HFT_2021221.Models
         public string Location { get; set; }
 
         [NotMapped]
-        [JsonIgnore]
         public virtual ICollection<Car> Cars { get; set; }
 
         [NotMapped]
-        [JsonIgnore]
         public virtual ICollection<Engine> Engines { get; set; }
 
         public Brand()

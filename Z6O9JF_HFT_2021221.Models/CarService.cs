@@ -14,7 +14,6 @@ namespace Z6O9JF_HFT_2021221.Models
         public string Location { get; set; }
 
         [NotMapped]
-        [JsonIgnore]
         public virtual ICollection<Mechanic> Mechanics { get; set; }
 
         public CarService()

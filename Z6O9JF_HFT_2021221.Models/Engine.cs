@@ -15,12 +15,11 @@ namespace Z6O9JF_HFT_2021221.Models
         public Enums.EngineType EngineType { get; set; }
 
         [NotMapped]
-        [JsonIgnore]
-        public virtual Brand Brand { get; set; }
+        public virtual ICollection<Car> Cars { get; set; }
 
         [NotMapped]
         [JsonIgnore]
-        public virtual ICollection<Car> Cars { get; set; }
+        public virtual Brand Brand { get; set; }
 
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }

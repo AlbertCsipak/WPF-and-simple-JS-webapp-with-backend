@@ -20,7 +20,6 @@ namespace Z6O9JF_HFT_2021221.Models
         public int ServiceId { get; set; }
 
         [NotMapped]
-        [JsonIgnore]
         public virtual ICollection<Car> Cars { get; set; }
 
         public Mechanic()

@@ -46,7 +46,7 @@ namespace Z6O9JF_HFT_2021221.Logic
                    .GetAll()
                    .AsEnumerable()
                    group x by x.Name into g
-                   select new KeyValuePair<string, List<string>>(g.Key, g.SelectMany(t => t.Mechanics).SelectMany(t => t.Cars).Select(t => t.Brand.Name).ToList());
+                   select new KeyValuePair<string, List<string>>(g.Key, g.SelectMany(t => t.Mechanics).SelectMany(t => t.Cars).Select(t => t.Brand.Name).Distinct().ToList());
         }
         public IEnumerable<KeyValuePair<string, List<Enums.EngineType>>> MechanicEngineTypes()
         {
