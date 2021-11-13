@@ -82,8 +82,8 @@ namespace Z6O9JF_HFT_2021221.Data
                 .OnDelete(DeleteBehavior.Restrict);
             });
 
-            CarService s1 = new() { Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 5837 };
-            CarService s2 = new() { Location = "UK", Name = "Bro Ken Carservice", TaxNumber = 1134 };
+            CarService s1 = new() { Location = "Hungary", Name = "Bekre Pál AutóSzerelde", TaxNumber = 2 };
+            CarService s2 = new() { Location = "UK", Name = "Bro Ken Carservice", TaxNumber = 1 };
 
             Mechanic m1 = new() { ServiceId = s1.TaxNumber, Name = "Béla", MechanicId = 1 };
             Mechanic m2 = new() { ServiceId = s2.TaxNumber, Name = "Géza", MechanicId = 2 };
@@ -109,7 +109,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 Displacement = 1688,
                 Power = 100,
                 EngineType = Enums.EngineType.Gasoline,
-                EngineCode = 1274232
+                EngineCode = 1
             };
             Engine e2 = new()
             {
@@ -117,7 +117,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 Displacement = 1688,
                 Power = 130,
                 EngineType = Enums.EngineType.Petrol,
-                EngineCode = 6748974
+                EngineCode = 2
             };
             Engine e3 = new()
             {
@@ -125,7 +125,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 Displacement = 1896,
                 Power = 105,
                 EngineType = Enums.EngineType.Gasoline,
-                EngineCode = 5123123
+                EngineCode = 3
             };
             Engine e4 = new()
             {
@@ -133,7 +133,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 Displacement = 1388,
                 Power = 122,
                 EngineType = Enums.EngineType.Petrol,
-                EngineCode = 9846372
+                EngineCode = 4
             };
             Engine e5 = new()
             {
@@ -141,7 +141,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 Displacement = 2480,
                 Power = 400,
                 EngineType = Enums.EngineType.Petrol,
-                EngineCode = 1968473
+                EngineCode = 5
             };
 
             List<Car> carList = new();
@@ -151,7 +151,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b8.BrandId,
                 EngineCode = e3.EngineCode,
                 MechanicId = m4.MechanicId,
-                Vin = 886144430,
+                Vin = 1,
                 OwnerId = o3.OwnerId,
                 ServiceCost = 1700
             };
@@ -162,7 +162,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b3.BrandId,
                 EngineCode = e1.EngineCode,
                 MechanicId = m1.MechanicId,
-                Vin = 476958188,
+                Vin = 2,
                 OwnerId = o1.OwnerId,
                 ServiceCost = 3500
             };
@@ -173,7 +173,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b3.BrandId,
                 EngineCode = e4.EngineCode,
                 MechanicId = m1.MechanicId,
-                Vin = 726486262,
+                Vin = 3,
                 OwnerId = o2.OwnerId,
                 ServiceCost = 200
             };
@@ -184,7 +184,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b8.BrandId,
                 EngineCode = e1.EngineCode,
                 MechanicId = m3.MechanicId,
-                Vin = 287686963,
+                Vin = 4,
                 OwnerId = o1.OwnerId,
                 ServiceCost = 900
             };
@@ -195,7 +195,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b7.BrandId,
                 EngineCode = e4.EngineCode,
                 MechanicId = m3.MechanicId,
-                Vin = 785422199,
+                Vin = 5,
                 OwnerId = o1.OwnerId,
                 ServiceCost = 2000
             };
@@ -206,7 +206,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b5.BrandId,
                 EngineCode = e5.EngineCode,
                 MechanicId = m2.MechanicId,
-                Vin = 614342478,
+                Vin = 6,
                 OwnerId = o3.OwnerId,
                 ServiceCost = 3300
             };
@@ -217,7 +217,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b3.BrandId,
                 EngineCode = e4.EngineCode,
                 MechanicId = m1.MechanicId,
-                Vin = 261246868,
+                Vin = 7,
                 OwnerId = o2.OwnerId,
                 ServiceCost = 3400
             };
@@ -228,7 +228,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b5.BrandId,
                 EngineCode = e1.EngineCode,
                 MechanicId = m1.MechanicId,
-                Vin = 152599871,
+                Vin = 8,
                 OwnerId = o1.OwnerId,
                 ServiceCost = 300
             };
@@ -239,7 +239,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b1.BrandId,
                 EngineCode = e3.EngineCode,
                 MechanicId = m2.MechanicId,
-                Vin = 417037113,
+                Vin = 9,
                 OwnerId = o3.OwnerId,
                 ServiceCost = 200
             };
@@ -250,7 +250,7 @@ namespace Z6O9JF_HFT_2021221.Data
                 BrandId = b3.BrandId,
                 EngineCode = e2.EngineCode,
                 MechanicId = m2.MechanicId,
-                Vin = 187238463,
+                Vin = 10,
                 OwnerId = o2.OwnerId,
                 ServiceCost = 900
             };

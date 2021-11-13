@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(CarService entity)
         {
-            if (entity.TaxNumber.ToString().Length != 4)
+            if (entity.TaxNumber < 0)
             {
                 throw new ArgumentException("Incorrect Tax Number");
             }

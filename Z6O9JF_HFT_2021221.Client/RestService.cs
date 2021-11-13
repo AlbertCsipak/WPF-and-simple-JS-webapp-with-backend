@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Z6O9JF_HFT_2021221.Client
 {
@@ -21,9 +18,7 @@ namespace Z6O9JF_HFT_2021221.Client
             client = new HttpClient();
             client.BaseAddress = new Uri(baseurl);
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue
-                ("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             try
             {
                 client.GetAsync("").GetAwaiter().GetResult();
@@ -88,7 +83,6 @@ namespace Z6O9JF_HFT_2021221.Client
         {
             HttpResponseMessage response =
                 client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
-
 
             response.EnsureSuccessStatusCode();
         }

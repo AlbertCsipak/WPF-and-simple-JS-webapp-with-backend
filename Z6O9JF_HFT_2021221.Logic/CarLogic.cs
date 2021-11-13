@@ -26,7 +26,7 @@ namespace Z6O9JF_HFT_2021221.Logic
             //{
             //    throw new ArgumentException("Incorrect OwnerId");
             //}
-            if (entity.Vin.ToString().Length != 9)
+            if (entity.Vin < 0)
             {
                 throw new ArgumentException("Incorrect Vehicle Identification Number");
             }

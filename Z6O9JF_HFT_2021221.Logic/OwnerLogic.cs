@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Owner entity)
         {
-            if (entity.OwnerId < 1)
+            if (entity.OwnerId < 0)
             {
                 throw new ArgumentException("Incorrect OwnerId");
             }
