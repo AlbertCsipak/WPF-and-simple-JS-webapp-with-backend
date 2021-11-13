@@ -12,11 +12,15 @@ namespace Z6O9JF_HFT_2021221.Test
     public class Test
     {
         IAdvancedLogic advancedLogic;
+        ICarServiceLogic serviceLogic;
         ICarLogic carLogic;
+        IEngineLogic engineLogic;
+        IBrandLogic brandLogic;
 
         [SetUp]
         public void MockSetup()
         {
+
             var mockCarRepository = new Mock<ICarRepository>();
             var mockBrandRepository = new Mock<IBrandRepository>();
             var mockCarServiceRepository = new Mock<ICarServiceRepository>();
@@ -29,12 +33,12 @@ namespace Z6O9JF_HFT_2021221.Test
                 new CarService()
                 {
                     Name = "Service1",
-                    TaxNumber = 1111
+                    TaxNumber = 1
                 },
                 new CarService()
                 {
                     Name = "Service2",
-                    TaxNumber = 2222
+                    TaxNumber = 2
                 }
             }.AsQueryable();
 
@@ -49,8 +53,7 @@ namespace Z6O9JF_HFT_2021221.Test
                 {
                     BrandId = 2,
                     Name = "Bmw"
-                },
-
+                }
             }.AsQueryable();
 
             var engines = new List<Engine>()
@@ -62,7 +65,7 @@ namespace Z6O9JF_HFT_2021221.Test
                     Displacement = 1788,
                     EngineType = Enums.EngineType.Petrol,
                     Power =  120,
-                    EngineCode = 0123456
+                    EngineCode = 1
                 },
                 new Engine()
                 {
@@ -71,7 +74,7 @@ namespace Z6O9JF_HFT_2021221.Test
                     Displacement = 1988,
                     EngineType = Enums.EngineType.Gasoline,
                     Power =  100,
-                    EngineCode = 6543210
+                    EngineCode = 2
                 }
             }.AsQueryable();
 
@@ -190,45 +193,65 @@ namespace Z6O9JF_HFT_2021221.Test
                 mockOwnerRepository.Object, mockCarServiceRepository.Object, mockEngineRepository.Object);
 
             carLogic = new CarLogic(mockCarRepository.Object);
+
+            serviceLogic = new CarServiceLogic(mockCarServiceRepository.Object);
+
+            engineLogic = new EngineLogic(mockEngineRepository.Object);
+
+            brandLogic = new BrandLogic(mockBrandRepository.Object);
         }
         [Test]
         public void CarBrandsInServiceTest()
         {
-
             var result = advancedLogic.CarBrandsInService();
-            ;
-            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750) };
 
+            var expected = new List<KeyValuePair<string, List<string>>>()
+            {
+                new KeyValuePair<string, List<string>>("Service1", new List<string>{"Audi","Bmw" }),
+                new KeyValuePair<string, List<string>>("Service2", new List<string>{"Audi","Bmw" })
+            };
 
+            Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
-        public void EveryCarWithMoreThan110HPByBrandTest()
+        public void OwnersAndTheirStrongestCarTest()
         {
             var result = advancedLogic.OwnersAndTheirStrongestCar();
-            ;
-            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750) };
 
+            var expected = new List<KeyValuePair<string, List<Car>>>()
+            {
+                new KeyValuePair<string, List<Car>>("Béla",new List<Car>() { carLogic.GetAll().FirstOrDefault(t => t.Vin == 1)} ),
+                new KeyValuePair<string, List<Car>>("Ádi",new List<Car>() { carLogic.GetAll().FirstOrDefault(t => t.Vin == 2) } ),
+            };
 
+            Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
         public void MechanicEngineTypesTest()
         {
             var result = advancedLogic.MechanicEngineTypes();
-            ;
-            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750) };
 
+            var expected = new List<KeyValuePair<string, List<Enums.EngineType>>>()
+            {
+                new KeyValuePair<string, List<Enums.EngineType>>("Géza",new List<Enums.EngineType>{Enums.EngineType.Petrol,Enums.EngineType.Gasoline } ),
+                new KeyValuePair<string, List<Enums.EngineType>>("Szabi",new List<Enums.EngineType>{Enums.EngineType.Petrol,Enums.EngineType.Gasoline } )
+            };
 
+            Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
         public void ServiceIncomeTest()
         {
             var result = advancedLogic.ServiceIncome();
-            ;
-            var expected = new List<KeyValuePair<string, double>>() { new KeyValuePair<string, double>("Audi", 750) };
 
+            var expected = new List<KeyValuePair<string, double>>()
+            {
+                new KeyValuePair<string, double>("Service1", 800),
+                new KeyValuePair<string, double>("Service2", 1600)
+            };
 
+            Assert.That(result, Is.EqualTo(expected));
         }
-
         [Test]
         public void AVGServiceCostByBrandsTest()
         {
@@ -238,7 +261,6 @@ namespace Z6O9JF_HFT_2021221.Test
 
             Assert.That(result, Is.EqualTo(expected));
         }
-
         [Test]
         public void GetAllTest()
         {
@@ -246,15 +268,39 @@ namespace Z6O9JF_HFT_2021221.Test
 
             Assert.That(result.Count(), Is.EqualTo(4));
         }
-
         [Test]
         public void CarLogicCreateExceptionTest()
         {
             Car testCar = new();
-            testCar.Vin = 5;
+            testCar.Vin = -1;
 
-            Assert.That(() => { carLogic.Create(testCar); }, Throws.Exception); //stack#933613
-
+            Assert.That(() => { carLogic.Create(testCar); }, Throws.Exception);
         }
+        [Test]
+        public void CarServiceLogicCreateExceptionTest()
+        {
+            CarService testService = new();
+            testService.TaxNumber = -1;
+
+            Assert.That(() => { serviceLogic.Create(testService); }, Throws.Exception);
+        }
+        [Test]
+        public void EngineCreateTest()
+        {
+            Engine testEngine = new();
+            testEngine.BrandId = -1;
+            testEngine.EngineCode = -1;
+
+            Assert.That(() => { engineLogic.Create(testEngine); }, Throws.Exception);
+        }
+        [Test]
+        public void BrandCreateTest()
+        {
+            Brand testBrand = new();
+            testBrand.BrandId = -1;
+
+            Assert.That(() => { brandLogic.Create(testBrand); }, Throws.Exception);
+        }
+
     }
 }
