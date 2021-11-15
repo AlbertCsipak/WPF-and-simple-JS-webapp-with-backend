@@ -5,7 +5,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 {
     public class UpdMenu
     {
-        public void UpdateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter)
+        public void UpdateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIMethods ui)
         {
             string options =
                 "- Update -\n" +
@@ -37,60 +37,202 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Car -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
-                    string updateInput = UIMethods.UIConsoleInput();
+                    string updateInput = ui.UIConsoleInput();
 
                     lineWriter?.Invoke("");
 
-                    Car carUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput)); ;
+                    Car toUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput)); ;
 
-                    while (carUpdate is null)
+                    while (toUpdate is null)
                     {
                         lineWriter?.Invoke("Invalid ID!");
-                        updateInput = UIMethods.UIConsoleInput();
+                        updateInput = ui.UIConsoleInput();
 
-                        carUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput));
+                        toUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput));
                     }
 
                     //itt jó lenne a reflexió de no time :c
 
                     lineWriter?.Invoke("Add the new value or leave it empty");
-                    writer?.Invoke($"Mechanic Id: {carUpdate.MechanicId} -> ");
-                    updateInput = UIMethods.UIConsoleInput();
+                    writer?.Invoke($"Mechanic Id: {toUpdate.MechanicId} -> ");
+                    updateInput = ui.UIConsoleInput();
 
                     if (!updateInput.Equals(""))
                     {
-                        carUpdate.MechanicId = int.Parse(updateInput);
+                        toUpdate.MechanicId = int.Parse(updateInput);
                     }
 
                     lineWriter?.Invoke("");
                     lineWriter?.Invoke("Add the new value or leave it empty");
-                    writer?.Invoke($"Model: {carUpdate.Model} -> ");
-                    updateInput = UIMethods.UIConsoleInput();
+                    writer?.Invoke($"Model: {toUpdate.Model} -> ");
+                    updateInput = ui.UIConsoleInput();
 
                     if (!updateInput.Equals(""))
                     {
-                        carUpdate.Model = updateInput;
+                        toUpdate.Model = updateInput;
                     }
 
-                    restService.Put(carUpdate, "car");
+                    restService.Put(toUpdate, "car");
 
                     lineWriter?.Invoke("Success!");
                 }
                 else if (input.Equals("2"))
                 {
+                    lineWriter?.Invoke("- Brand -\n");
+                    writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
+                    string updateInput = ui.UIConsoleInput();
+
+                    lineWriter?.Invoke("");
+
+                    Brand toUpdate = restService.Get<Brand>("brand").FirstOrDefault(t => t.BrandId == int.Parse(updateInput)); ;
+
+                    while (toUpdate is null)
+                    {
+                        lineWriter?.Invoke("Invalid ID!");
+                        updateInput = ui.UIConsoleInput();
+
+                        toUpdate = restService.Get<Brand>("brand").FirstOrDefault(t => t.BrandId == int.Parse(updateInput));
+                    }
+
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"Name: {toUpdate.Name} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.Name = updateInput;
+                    }
+
+                    lineWriter?.Invoke("");
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"Location: {toUpdate.Location} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.Location = updateInput;
+                    }
+
+                    restService.Put(toUpdate, "brand");
+
+                    lineWriter?.Invoke("Success!");
                 }
                 else if (input.Equals("3"))
                 {
+                    lineWriter?.Invoke("- Mechanic -\n");
+                    writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
+                    string updateInput = ui.UIConsoleInput();
+
+                    lineWriter?.Invoke("");
+
+                    Mechanic toUpdate = restService.Get<Mechanic>("mechanic").FirstOrDefault(t => t.MechanicId == int.Parse(updateInput)); ;
+
+                    while (toUpdate is null)
+                    {
+                        lineWriter?.Invoke("Invalid ID!");
+                        updateInput = ui.UIConsoleInput();
+
+                        toUpdate = restService.Get<Mechanic>("mechanic").FirstOrDefault(t => t.MechanicId == int.Parse(updateInput));
+                    }
+
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"Name: {toUpdate.Name} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.Name = updateInput;
+                    }
+
+                    lineWriter?.Invoke("");
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"ServiceID: {toUpdate.ServiceId} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.ServiceId = int.Parse(updateInput);
+                    }
+
+                    restService.Put(toUpdate, "mechanic");
+
+                    lineWriter?.Invoke("Success!");
                 }
                 else if (input.Equals("4"))
                 {
+                    lineWriter?.Invoke("- Engine -\n");
+                    writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
+                    string updateInput = ui.UIConsoleInput();
+
+                    lineWriter?.Invoke("");
+
+                    Engine toUpdate = restService.Get<Engine>("engine").FirstOrDefault(t => t.EngineCode == int.Parse(updateInput)); ;
+
+                    while (toUpdate is null)
+                    {
+                        lineWriter?.Invoke("Invalid ID!");
+                        updateInput = ui.UIConsoleInput();
+
+                        toUpdate = restService.Get<Engine>("engine").FirstOrDefault(t => t.EngineCode == int.Parse(updateInput));
+                    }
+
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"Power: {toUpdate.Power} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.Power = int.Parse(updateInput);
+                    }
+
+                    lineWriter?.Invoke("");
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"BrandID: {toUpdate.BrandId} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.BrandId = int.Parse(updateInput);
+                    }
+
+                    restService.Put(toUpdate, "engine");
+
+                    lineWriter?.Invoke("Success!");
                 }
                 else if (input.Equals("5"))
                 {
+                    lineWriter?.Invoke("- Owner -\n");
+                    writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
+                    string updateInput = ui.UIConsoleInput();
+
+                    lineWriter?.Invoke("");
+
+                    Owner toUpdate = restService.Get<Owner>("owner").FirstOrDefault(t => t.OwnerId == int.Parse(updateInput)); ;
+
+                    while (toUpdate is null)
+                    {
+                        lineWriter?.Invoke("Invalid ID!");
+                        updateInput = ui.UIConsoleInput();
+
+                        toUpdate = restService.Get<Owner>("owner").FirstOrDefault(t => t.OwnerId == int.Parse(updateInput));
+                    }
+
+                    lineWriter?.Invoke("Add the new value or leave it empty");
+                    writer?.Invoke($"Name: {toUpdate.Name} -> ");
+                    updateInput = ui.UIConsoleInput();
+
+                    if (!updateInput.Equals(""))
+                    {
+                        toUpdate.Name = updateInput;
+                    }
+
+                    restService.Put(toUpdate, "name");
+
+                    lineWriter?.Invoke("Success!");
                 }
                 else if (input.Equals("_"))
                 {
@@ -103,7 +245,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                 if (terminalStop == false)
                 {
-                    input = UIMethods.UIConsoleInput();
+                    input = ui.UIConsoleInput();
                 }
             }
         }

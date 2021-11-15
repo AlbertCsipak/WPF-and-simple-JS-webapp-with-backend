@@ -17,6 +17,21 @@ namespace Z6O9JF_HFT_2021221.Models
 
         [NotMapped]
         public virtual ICollection<Engine> Engines { get; set; }
+        public override string ToString()
+        {
+            string name = "-";
+            if (Name != null)
+            {
+                name = Name;
+            }
+            string location = "-";
+            if (Location != null)
+            {
+                location = Location;
+            }
+            return $"BrandId: {BrandId}\tName: {name}\t\tLocation: {location}\t";
+
+        }
 
         public Brand()
         {

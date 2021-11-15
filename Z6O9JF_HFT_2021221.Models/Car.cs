@@ -41,5 +41,15 @@ namespace Z6O9JF_HFT_2021221.Models
 
         [ForeignKey(nameof(Engine))]
         public int EngineCode { get; set; }
+        public override string ToString()
+        {
+            string model = "-";
+            if (Model != null)
+            {
+                model = Model;
+            }
+
+            return $"Vin: {Vin}\tBrandID: {BrandId}\tMechanicId: {MechanicId}\tOwnerID: {OwnerId}\tEngineCode: {EngineCode}\tModel: {model}";
+        }
     }
 }

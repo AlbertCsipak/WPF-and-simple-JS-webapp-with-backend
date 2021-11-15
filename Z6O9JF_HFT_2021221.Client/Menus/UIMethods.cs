@@ -4,7 +4,7 @@ namespace Z6O9JF_HFT_2021221.Client
 {
     public class UIMethods
     {
-        public static string UIConsoleInput()
+        public string UIConsoleInput()
         {
             return Console.ReadLine();
         }

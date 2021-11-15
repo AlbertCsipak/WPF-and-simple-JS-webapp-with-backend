@@ -14,7 +14,20 @@ namespace Z6O9JF_HFT_2021221.Models
 
         [NotMapped]
         public virtual ICollection<Mechanic> Mechanics { get; set; }
-
+        public override string ToString()
+        {
+            string name = "-";
+            if (Name != null)
+            {
+                name = Name;
+            }
+            string location = "-";
+            if (Location != null)
+            {
+                location = Location;
+            }
+            return $"TaxNumber: {TaxNumber}\tName: {name}\tLocation: {location}";
+        }
         public CarService()
         {
             Mechanics = new HashSet<Mechanic>();

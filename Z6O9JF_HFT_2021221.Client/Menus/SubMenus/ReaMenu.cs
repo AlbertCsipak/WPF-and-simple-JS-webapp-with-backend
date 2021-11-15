@@ -4,7 +4,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 {
     public class ReaMenu
     {
-        public void ReadMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter)
+        public void ReadMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIMethods ui)
         {
             string options =
                 "- Read -\n" +
@@ -37,7 +37,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     foreach (var item in get)
                     {
-                        lineWriter?.Invoke(item.Vin.ToString());
+                        lineWriter?.Invoke(item.ToString());
                     }
                 }
                 else if (input.Equals("2"))
@@ -46,7 +46,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     foreach (var item in get)
                     {
-                        lineWriter?.Invoke(item.BrandId.ToString());
+                        lineWriter?.Invoke(item.ToString());
                     }
                 }
                 else if (input.Equals("3"))
@@ -55,7 +55,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     foreach (var item in get)
                     {
-                        lineWriter?.Invoke(item.MechanicId.ToString());
+                        lineWriter?.Invoke(item.ToString());
                     }
                 }
                 else if (input.Equals("4"))
@@ -64,7 +64,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     foreach (var item in get)
                     {
-                        lineWriter?.Invoke(item.EngineCode.ToString());
+                        lineWriter?.Invoke(item.ToString());
                     }
                 }
                 else if (input.Equals("5"))
@@ -73,7 +73,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     foreach (var item in get)
                     {
-                        lineWriter?.Invoke(item.OwnerId.ToString());
+                        lineWriter?.Invoke(item.ToString());
                     }
                 }
                 else if (input.Equals("_"))
@@ -87,7 +87,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                 if (terminalStop == false)
                 {
-                    input = UIMethods.UIConsoleInput();
+                    input = ui.UIConsoleInput();
                 }
             }
         }

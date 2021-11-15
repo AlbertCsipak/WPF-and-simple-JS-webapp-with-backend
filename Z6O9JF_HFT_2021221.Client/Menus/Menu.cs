@@ -50,6 +50,7 @@ namespace Z6O9JF_HFT_2021221.Client
         }
         void MenuLoaded(RestService restService)
         {
+            UIMethods ui = new();
             DelMenu delMenu = new();
             AdvMenu advMenu = new();
             CreMenu creMenu = new();
@@ -83,7 +84,7 @@ namespace Z6O9JF_HFT_2021221.Client
                 }
                 else if (input.Equals("1"))
                 {
-                    advMenu.AdvancedMenu(restService, consoleClear, writer, lineWriter);
+                    advMenu.AdvancedMenu(restService, consoleClear, writer, lineWriter,ui);
 
                     consoleClear?.Invoke();
 
@@ -91,7 +92,7 @@ namespace Z6O9JF_HFT_2021221.Client
                 }
                 else if (input.Equals("2"))
                 {
-                    creMenu.CreateMenu(restService, consoleClear, writer, lineWriter);
+                    creMenu.CreateMenu(restService, consoleClear, writer, lineWriter,ui);
 
                     consoleClear?.Invoke();
 
@@ -100,7 +101,7 @@ namespace Z6O9JF_HFT_2021221.Client
                 }
                 else if (input.Equals("3"))
                 {
-                    reaMenu.ReadMenu(restService, consoleClear, writer, lineWriter);
+                    reaMenu.ReadMenu(restService, consoleClear, writer, lineWriter,ui);
 
                     consoleClear?.Invoke();
 
@@ -108,7 +109,7 @@ namespace Z6O9JF_HFT_2021221.Client
                 }
                 else if (input.Equals("4"))
                 {
-                    updMenu.UpdateMenu(restService, consoleClear, writer, lineWriter);
+                    updMenu.UpdateMenu(restService, consoleClear, writer, lineWriter,ui);
 
                     consoleClear?.Invoke();
 
@@ -116,7 +117,7 @@ namespace Z6O9JF_HFT_2021221.Client
                 }
                 else if (input.Equals("5"))
                 {
-                    delMenu.DeleteMenu(restService, consoleClear, writer, lineWriter);
+                    delMenu.DeleteMenu(restService, consoleClear, writer, lineWriter,ui);
 
                     consoleClear?.Invoke();
 
@@ -133,7 +134,7 @@ namespace Z6O9JF_HFT_2021221.Client
 
                 if (terminalStop == false)
                 {
-                    input = UIMethods.UIConsoleInput();
+                    input = ui.UIConsoleInput();
                 }
             }
         }

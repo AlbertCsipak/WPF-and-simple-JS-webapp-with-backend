@@ -5,7 +5,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 {
     public class AdvMenu
     {
-        public void AdvancedMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter)
+        public void AdvancedMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIMethods ui)
         {
             string options =
                 "- Advanced -\n" +
@@ -103,7 +103,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                 if (terminalStop == false)
                 {
-                    input = UIMethods.UIConsoleInput();
+                    input = ui.UIConsoleInput();
                 }
             }
         }

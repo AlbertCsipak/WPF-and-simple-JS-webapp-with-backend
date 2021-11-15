@@ -23,6 +23,15 @@ namespace Z6O9JF_HFT_2021221.Models
 
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
+        public override string ToString()
+        {
+            string engineTpye = "-";
+            if (EngineType != null)
+            {
+                engineTpye = EngineType.ToString();
+            }
+            return $"EngineCode: {EngineCode}\tDisplacement: {Displacement}\tPower: {Power}\tEngineType: {EngineType}\tBrandID: {BrandId}";
+        }
 
         public Engine()
         {

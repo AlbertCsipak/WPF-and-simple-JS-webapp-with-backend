@@ -21,7 +21,15 @@ namespace Z6O9JF_HFT_2021221.Models
 
         [NotMapped]
         public virtual ICollection<Car> Cars { get; set; }
-
+        public override string ToString()
+        {
+            string name = "-";
+            if (Name != null)
+            {
+                name = Name;
+            }
+            return $"MechanicID: {MechanicId}\tName: {name}";
+        }
         public Mechanic()
         {
             Cars = new HashSet<Car>();
