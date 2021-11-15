@@ -21,7 +21,7 @@
         static void Main(string[] args)
         {
             // a program nem teljesen user-proof, sajnos nincs időm lekezelni mindent
-            // a create metódusokban nem lehet megadni az összes propertyt, se az updateben ismét, idő hiánya miatt
+            // a create metódusokban nem lehet megadni az összes propertyt, se az updateben, ismét idő hiány miatt :/
             Init();
         }
     }
