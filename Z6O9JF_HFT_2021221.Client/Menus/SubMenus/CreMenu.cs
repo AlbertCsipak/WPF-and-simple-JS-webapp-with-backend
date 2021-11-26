@@ -6,7 +6,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 {
     public class CreMenu
     {
-        public void CreateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIMethods ui)
+        public void CreateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
         {
             string options =
                 "- Create -\n" +
@@ -39,50 +39,50 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Car -\n");
                     writer?.Invoke("Please enter the desired BrandId of your car: ");
 
-                    string brandInput = ui.UIConsoleInput();
+                    string brandInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
                     while (!restService.Get<Brand>("brand").Select(t => t.BrandId).Contains(int.Parse(brandInput)))
                     {
                         writer?.Invoke("Invalid Id please try again: ");
-                        brandInput = ui.UIConsoleInput();
+                        brandInput = uIInput?.Invoke();
                     }
 
                     writer?.Invoke("Please enter the MechanicId: ");
 
-                    string mechanicInput = ui.UIConsoleInput();
+                    string mechanicInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
                     while (!restService.Get<Mechanic>("mechanic").Select(t => t.MechanicId).Contains(int.Parse(mechanicInput)))
                     {
                         writer?.Invoke("Invalid Id please try again: ");
-                        mechanicInput = ui.UIConsoleInput();
+                        mechanicInput = uIInput?.Invoke();
                     }
 
                     writer?.Invoke("Please enter the EngineCode: ");
 
-                    string engineInput = ui.UIConsoleInput();
+                    string engineInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
                     while (!restService.Get<Engine>("engine").Select(t => t.EngineCode).Contains(int.Parse(engineInput)))
                     {
                         writer?.Invoke("Invalid Id please try again: ");
-                        engineInput = ui.UIConsoleInput();
+                        engineInput = uIInput?.Invoke();
                     }
 
                     writer?.Invoke("Please enter the OwnerId: ");
 
-                    string ownerInput = ui.UIConsoleInput();
+                    string ownerInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
                     while (!restService.Get<Owner>("owner").Select(t => t.OwnerId).Contains(int.Parse(ownerInput)))
                     {
                         writer?.Invoke("Invalid Id please try again: ");
-                        ownerInput = ui.UIConsoleInput();
+                        ownerInput = uIInput?.Invoke();
                     }
 
                     restService.Post(new Car
@@ -101,7 +101,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     writer?.Invoke("Please enter the desired Name of your Brand: ");
 
-                    string nameInput = ui.UIConsoleInput();
+                    string nameInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -118,7 +118,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     writer?.Invoke("Please enter the desired Name of your Owner: ");
 
-                    string nameInput = ui.UIConsoleInput();
+                    string nameInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -135,7 +135,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     writer?.Invoke("Please enter the desired Name of your CarService: ");
 
-                    string nameInput = ui.UIConsoleInput();
+                    string nameInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -153,19 +153,19 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     writer?.Invoke("Please enter the desired BrandId of your Engine: ");
 
-                    string brandInput = ui.UIConsoleInput();
+                    string brandInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
                     while (!restService.Get<Brand>("brand").Select(t => t.BrandId).Contains(int.Parse(brandInput)))
                     {
                         writer?.Invoke("Invalid Id please try again: ");
-                        brandInput = ui.UIConsoleInput();
+                        brandInput = uIInput?.Invoke();
                     }
 
                     writer?.Invoke("Please enter the desired Power of your Engine: ");
 
-                    string powerInput = ui.UIConsoleInput();
+                    string powerInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -188,7 +188,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                 if (terminalStop == false)
                 {
-                    input = ui.UIConsoleInput();
+                    input = uIInput?.Invoke();
                 }
             }
         }

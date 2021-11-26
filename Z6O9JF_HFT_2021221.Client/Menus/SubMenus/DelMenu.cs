@@ -2,7 +2,7 @@
 {
     public class DelMenu
     {
-        public void DeleteMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIMethods ui)
+        public void DeleteMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
         {
             string options =
                 "- Delete -\n" +
@@ -34,7 +34,7 @@
                     lineWriter?.Invoke("- Car -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to delete: ");
 
-                    string deleteInput = ui.UIConsoleInput();
+                    string deleteInput = uIInput?.Invoke();
 
                     restService.Delete(int.Parse(deleteInput), "car");
 
@@ -45,7 +45,7 @@
                     lineWriter?.Invoke("- Brand -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to delete: ");
 
-                    string deleteInput = ui.UIConsoleInput();
+                    string deleteInput = uIInput?.Invoke();
 
                     restService.Delete(int.Parse(deleteInput), "brand");
 
@@ -56,7 +56,7 @@
                     lineWriter?.Invoke("- Mechanic -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to delete: ");
 
-                    string deleteInput = ui.UIConsoleInput();
+                    string deleteInput = uIInput?.Invoke();
 
                     restService.Delete(int.Parse(deleteInput), "mechanic");
 
@@ -67,7 +67,7 @@
                     lineWriter?.Invoke("- Engine -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to delete: ");
 
-                    string deleteInput = ui.UIConsoleInput();
+                    string deleteInput = uIInput?.Invoke();
 
                     restService.Delete(int.Parse(deleteInput), "engine");
 
@@ -78,7 +78,7 @@
                     lineWriter?.Invoke("- Owner -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to delete: ");
 
-                    string deleteInput = ui.UIConsoleInput();
+                    string deleteInput = uIInput?.Invoke();
 
                     restService.Delete(int.Parse(deleteInput), "owner");
 
@@ -95,7 +95,7 @@
 
                 if (terminalStop == false)
                 {
-                    input = ui.UIConsoleInput();
+                    input = uIInput?.Invoke();
                 }
             }
         }

@@ -10,8 +10,9 @@
 
             UIMethods ui = new();
 
-            menu.writer += ui.Writer;
-            menu.lineWriter += ui.LineWriter;
+            menu.write += ui.Writer;
+            menu.writeLine += ui.LineWriter;
+            menu.uiInput += ui.UIConsoleInput;
             menu.cursorPos += ui.CursorPos;
             menu.cursorVis += ui.CursorVis;
             menu.consoleClear += ui.ConsoleClear;

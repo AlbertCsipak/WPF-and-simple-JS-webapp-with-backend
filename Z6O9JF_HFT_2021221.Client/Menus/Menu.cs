@@ -2,13 +2,19 @@
 
 namespace Z6O9JF_HFT_2021221.Client
 {
+    public delegate void UI();
+    public delegate void UIWrite(string s);
+    public delegate void UICursor(int i1, int i2);
+    public delegate void UICursorVis(bool bl);
+    public delegate string UIInput();
     public class Menu
     {
         public event UI consoleClear;
-        public event UIWrite writer;
-        public event UIWrite lineWriter;
+        public event UIWrite write;
+        public event UIWrite writeLine;
         public event UICursor cursorPos;
         public event UICursorVis cursorVis;
+        public event UIInput uiInput;
 
         public void Start(RestService restService)
         {
@@ -23,30 +29,30 @@ namespace Z6O9JF_HFT_2021221.Client
 
             cursorPos?.Invoke(50, 0);
 
-            writer?.Invoke("Loading ");
+            write?.Invoke("Loading ");
 
             //loader style 1
-            writer?.Invoke("\n[");
+            write?.Invoke("\n[");
 
             cursorPos?.Invoke(102, 1);
 
-            writer?.Invoke("]");
+            write?.Invoke("]");
 
             double sec = 7;
 
             for (int i = 0; i < 100; i++)
             {
                 cursorPos?.Invoke(104, 1);
-                writer?.Invoke($"{i}%");
+                write?.Invoke($"{i}%");
 
                 cursorPos?.Invoke(42, 2);
-                writer?.Invoke($"est. time remaining: {sec:n1} s");
+                write?.Invoke($"est. time remaining: {sec:n1} s");
 
                 cursorPos?.Invoke(i + 1, 1);
-                writer?.Invoke("=");
+                write?.Invoke("=");
 
                 cursorPos?.Invoke(i + 2, 1);
-                writer?.Invoke(">");
+                write?.Invoke(">");
 
                 sec = sec - 0.07;
                 System.Threading.Thread.Sleep(70);
@@ -73,13 +79,13 @@ namespace Z6O9JF_HFT_2021221.Client
             //}
 
             cursorPos?.Invoke(0, 0);
-            writer?.Invoke("\t\t");
+            write?.Invoke("\t\t");
             cursorPos?.Invoke(0, 0);
             cursorVis?.Invoke(true);
 
-            MenuLoaded(restService, ui, delMenu, advMenu, creMenu, reaMenu, updMenu);
+            MenuLoaded(restService, delMenu, advMenu, creMenu, reaMenu, updMenu);
         }
-        void MenuLoaded(RestService restService, UIMethods ui, DelMenu delMenu, AdvMenu advMenu, CreMenu creMenu, ReaMenu reaMenu, UpdMenu updMenu)
+        void MenuLoaded(RestService restService, DelMenu delMenu, AdvMenu advMenu, CreMenu creMenu, ReaMenu reaMenu, UpdMenu updMenu)
         {
             string options =
                 "- Welcome -\n" +
@@ -98,67 +104,65 @@ namespace Z6O9JF_HFT_2021221.Client
 
             while (terminalStop is false)
             {
-                consoleClear?.Invoke();
-
-                lineWriter?.Invoke(options);
-
                 if (input.Equals("0"))
                 {
                     terminalStop = true;
                 }
                 else if (input.Equals("1"))
                 {
-                    advMenu.AdvancedMenu(restService, consoleClear, writer, lineWriter, ui);
+                    advMenu.AdvancedMenu(restService, consoleClear, write, writeLine, uiInput);
 
                     consoleClear?.Invoke();
 
-                    lineWriter?.Invoke(options);
+                    writeLine?.Invoke(options);
                 }
                 else if (input.Equals("2"))
                 {
-                    creMenu.CreateMenu(restService, consoleClear, writer, lineWriter, ui);
+                    creMenu.CreateMenu(restService, consoleClear, write, writeLine, uiInput);
 
                     consoleClear?.Invoke();
 
-                    lineWriter?.Invoke(options);
+                    writeLine?.Invoke(options);
 
                 }
                 else if (input.Equals("3"))
                 {
-                    reaMenu.ReadMenu(restService, consoleClear, writer, lineWriter, ui);
+                    reaMenu.ReadMenu(restService, consoleClear, write, writeLine, uiInput);
 
                     consoleClear?.Invoke();
 
-                    lineWriter?.Invoke(options);
+                    writeLine?.Invoke(options);
                 }
                 else if (input.Equals("4"))
                 {
-                    updMenu.UpdateMenu(restService, consoleClear, writer, lineWriter, ui);
+                    updMenu.UpdateMenu(restService, consoleClear, write, writeLine, uiInput);
 
                     consoleClear?.Invoke();
 
-                    lineWriter?.Invoke(options);
+                    writeLine?.Invoke(options);
                 }
                 else if (input.Equals("5"))
                 {
-                    delMenu.DeleteMenu(restService, consoleClear, writer, lineWriter, ui);
+                    delMenu.DeleteMenu(restService, consoleClear, write, writeLine, uiInput);
 
                     consoleClear?.Invoke();
 
-                    lineWriter?.Invoke(options);
+                    writeLine?.Invoke(options);
                 }
                 else if (input.Equals("_"))
                 {
+                    consoleClear?.Invoke();
 
+                    writeLine?.Invoke(options);
                 }
                 else
                 {
-                    lineWriter?.Invoke("That is not a valid option!");
+                    writeLine?.Invoke("That is not a valid option!");
                 }
 
                 if (terminalStop == false)
                 {
-                    input = ui.UIConsoleInput();
+                    input = uiInput?.Invoke();
                 }
             }
         }

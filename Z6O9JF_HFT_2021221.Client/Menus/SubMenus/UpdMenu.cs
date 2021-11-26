@@ -5,7 +5,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 {
     public class UpdMenu
     {
-        public void UpdateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIMethods ui)
+        public void UpdateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
         {
             string options =
                 "- Update -\n" +
@@ -37,7 +37,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Car -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
-                    string updateInput = ui.UIConsoleInput();
+                    string updateInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -46,16 +46,14 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     while (toUpdate is null)
                     {
                         lineWriter?.Invoke("Invalid ID!");
-                        updateInput = ui.UIConsoleInput();
+                        updateInput = uIInput?.Invoke();
 
                         toUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput));
                     }
 
-                    //itt jó lenne a reflexió de no time :c
-
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Mechanic Id: {toUpdate.MechanicId} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -65,7 +63,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("");
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Model: {toUpdate.Model} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -81,7 +79,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Brand -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
-                    string updateInput = ui.UIConsoleInput();
+                    string updateInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -90,14 +88,14 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     while (toUpdate is null)
                     {
                         lineWriter?.Invoke("Invalid ID!");
-                        updateInput = ui.UIConsoleInput();
+                        updateInput = uIInput?.Invoke();
 
                         toUpdate = restService.Get<Brand>("brand").FirstOrDefault(t => t.BrandId == int.Parse(updateInput));
                     }
 
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Name: {toUpdate.Name} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -107,7 +105,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("");
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Location: {toUpdate.Location} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -123,7 +121,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Mechanic -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
-                    string updateInput = ui.UIConsoleInput();
+                    string updateInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -132,14 +130,14 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     while (toUpdate is null)
                     {
                         lineWriter?.Invoke("Invalid ID!");
-                        updateInput = ui.UIConsoleInput();
+                        updateInput = uIInput?.Invoke();
 
                         toUpdate = restService.Get<Mechanic>("mechanic").FirstOrDefault(t => t.MechanicId == int.Parse(updateInput));
                     }
 
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Name: {toUpdate.Name} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -149,7 +147,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("");
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"ServiceID: {toUpdate.ServiceId} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -165,7 +163,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Engine -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
-                    string updateInput = ui.UIConsoleInput();
+                    string updateInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -174,14 +172,14 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     while (toUpdate is null)
                     {
                         lineWriter?.Invoke("Invalid ID!");
-                        updateInput = ui.UIConsoleInput();
+                        updateInput = uIInput?.Invoke();
 
                         toUpdate = restService.Get<Engine>("engine").FirstOrDefault(t => t.EngineCode == int.Parse(updateInput));
                     }
 
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Power: {toUpdate.Power} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -191,7 +189,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("");
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"BrandID: {toUpdate.BrandId} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -207,7 +205,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     lineWriter?.Invoke("- Owner -\n");
                     writer?.Invoke("Please type the Id of the Entity that you would like to update: ");
 
-                    string updateInput = ui.UIConsoleInput();
+                    string updateInput = uIInput?.Invoke();
 
                     lineWriter?.Invoke("");
 
@@ -216,14 +214,14 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
                     while (toUpdate is null)
                     {
                         lineWriter?.Invoke("Invalid ID!");
-                        updateInput = ui.UIConsoleInput();
+                        updateInput = uIInput?.Invoke();
 
                         toUpdate = restService.Get<Owner>("owner").FirstOrDefault(t => t.OwnerId == int.Parse(updateInput));
                     }
 
                     lineWriter?.Invoke("Add the new value or leave it empty");
                     writer?.Invoke($"Name: {toUpdate.Name} -> ");
-                    updateInput = ui.UIConsoleInput();
+                    updateInput = uIInput?.Invoke();
 
                     if (!updateInput.Equals(""))
                     {
@@ -245,7 +243,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                 if (terminalStop == false)
                 {
-                    input = ui.UIConsoleInput();
+                    input = uIInput?.Invoke();
                 }
             }
         }

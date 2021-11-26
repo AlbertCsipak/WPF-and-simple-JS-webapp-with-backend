@@ -26,7 +26,7 @@ namespace Z6O9JF_HFT_2021221.Models
         public override string ToString()
         {
             string engineTpye = "-";
-            if (EngineType != null)
+            if (EngineType != 0)
             {
                 engineTpye = EngineType.ToString();
             }
