@@ -87,6 +87,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     restService.Post(new Car
                     {
+                        
                         BrandId = int.Parse(brandInput),
                         MechanicId = int.Parse(mechanicInput),
                         EngineCode = int.Parse(engineInput),

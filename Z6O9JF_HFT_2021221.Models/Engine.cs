@@ -25,11 +25,6 @@ namespace Z6O9JF_HFT_2021221.Models
         public int BrandId { get; set; }
         public override string ToString()
         {
-            string engineTpye = "-";
-            if (EngineType != 0)
-            {
-                engineTpye = EngineType.ToString();
-            }
             return $"EngineCode: {EngineCode}\tDisplacement: {Displacement}\tPower: {Power}\tEngineType: {EngineType}\tBrandID: {BrandId}";
         }
 
