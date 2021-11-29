@@ -5,7 +5,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 {
     public class UpdMenu
     {
-        public void UpdateMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
+        public void UpdateMenu(RestService restService, UIClear consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
         {
             string options =
                 "- Update -\n" +
@@ -41,7 +41,7 @@ namespace Z6O9JF_HFT_2021221.Client.Menus.SubMenus
 
                     lineWriter?.Invoke("");
 
-                    Car toUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput)); ;
+                    Car toUpdate = restService.Get<Car>("car").FirstOrDefault(t => t.Vin == int.Parse(updateInput));
 
                     while (toUpdate is null)
                     {

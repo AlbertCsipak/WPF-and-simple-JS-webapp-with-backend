@@ -2,7 +2,7 @@
 {
     public class DelMenu
     {
-        public void DeleteMenu(RestService restService, UI consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
+        public void DeleteMenu(RestService restService, UIClear consoleClear, UIWrite writer, UIWrite lineWriter, UIInput uIInput)
         {
             string options =
                 "- Delete -\n" +

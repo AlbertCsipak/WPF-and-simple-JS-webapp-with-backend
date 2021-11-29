@@ -2,14 +2,14 @@
 
 namespace Z6O9JF_HFT_2021221.Client
 {
-    public delegate void UI();
+    public delegate void UIClear();
     public delegate void UIWrite(string s);
     public delegate void UICursor(int i1, int i2);
     public delegate void UICursorVis(bool bl);
     public delegate string UIInput();
     public class Menu
     {
-        public event UI consoleClear;
+        public event UIClear consoleClear;
         public event UIWrite write;
         public event UIWrite writeLine;
         public event UICursor cursorPos;
