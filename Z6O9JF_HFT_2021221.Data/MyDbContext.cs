@@ -20,7 +20,7 @@ namespace Z6O9JF_HFT_2021221.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbBuilder)
         {
-            //MultipleActiveResultSets = True
+            //MultipleActiveResultSets = Trueasd
             if (!dbBuilder.IsConfigured)
             {
                 string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;
