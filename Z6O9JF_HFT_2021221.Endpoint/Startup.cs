@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Z6O9JF_HFT_2021221.Data;
+using Z6O9JF_HFT_2021221.Endpoint.Services;
 using Z6O9JF_HFT_2021221.Logic;
 using Z6O9JF_HFT_2021221.Repository;
 
@@ -29,6 +30,8 @@ namespace Z6O9JF_HFT_2021221.Endpoint
             services.AddTransient<IEngineRepository, EngineRepository>();
             services.AddTransient<ICarServiceRepository, CarServiceRepository>();
 
+            services.AddSignalR();
+
             services.AddTransient<MyDbContext, MyDbContext>();
         }
 
@@ -44,6 +47,7 @@ namespace Z6O9JF_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
