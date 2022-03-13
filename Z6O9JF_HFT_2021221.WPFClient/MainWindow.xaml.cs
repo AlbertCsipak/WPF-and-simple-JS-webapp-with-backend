@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Z6O9JF_HFT_2021221.WPFClient.UserControls;
 
@@ -30,12 +18,17 @@ namespace Z6O9JF_HFT_2021221.WPFClient
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
 
-            cc_MainMenu.Content = new MainMenuUserControl();
+            cc_MainMenu.Content = new MainMenuUserControl(cc_MainMenu);
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void HomeButton(object sender, RoutedEventArgs e)
+        {
+            cc_MainMenu.Content = new MainMenuUserControl(cc_MainMenu);
         }
     }
 }

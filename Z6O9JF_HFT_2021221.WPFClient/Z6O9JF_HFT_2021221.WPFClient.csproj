@@ -26,8 +26,4 @@
 	  <Resource Include="Images\bg2.jpg" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Logic\" />
-	</ItemGroup>
-
 </Project>

@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Z6O9JF_HFT_2021221.WPFClient"
         xmlns:vm="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.ViewModels"
         mc:Ignorable="d"
-        Title="CoolCarDataBaseManager" Height="720" Width="1280" Icon="images/bg.jpg" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True"> 
+        Title="CoolCarDataBaseManager" Height="720" Width="1280" Icon="images/bg.jpg" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True">
+    <Window.DataContext>
+        <vm:MainWindowVM></vm:MainWindowVM>
+    </Window.DataContext>
     <Grid>
         
         <Grid.Background>
@@ -24,7 +27,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <Button Content="BACK" FontSize="20" Grid.Column="0" >
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -46,7 +49,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Content="HOME" FontSize="20" Grid.Column="1">
+            <Button Content="HOME" Click="HomeButton" FontSize="20" Grid.Column="1">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="White"/>
@@ -69,7 +72,7 @@
             </Button>
             <Label x:Name="LiveTimeLabel" FontSize="20" Grid.Column="2" Background="White"
               VerticalContentAlignment="Center" Foreground="Red" HorizontalContentAlignment="Center"></Label>
-            
+
         </Grid>
 
         <ContentControl x:Name="cc_MainMenu" Grid.Row="1"></ContentControl>

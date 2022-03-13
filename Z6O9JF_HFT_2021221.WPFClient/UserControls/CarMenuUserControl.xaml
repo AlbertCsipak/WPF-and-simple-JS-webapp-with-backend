@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Z6O9JF_HFT_2021221.WPFClient.UserControls.CarMenuUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.UserControls"
+             xmlns:vm="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <vm:CarMenuVM x:Key="vm" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource vm}" />
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Label FontSize="20" Content="Mechanic" Background="White" HorizontalContentAlignment="Center"></Label>
+            <TextBox Text="{Binding SelectedCar.MechanicId}" FontSize="20"></TextBox>
+            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Margin="10"></Button>
+            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Margin="10"></Button>
+            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Margin="10"></Button>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Grid.Column="1" Margin="20"></ListBox>
+    </Grid>
+</UserControl>

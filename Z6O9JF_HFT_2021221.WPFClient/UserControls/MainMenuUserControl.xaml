@@ -13,7 +13,7 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-            <Button Content="CARS" Margin="10" Height="40" FontSize="20" Command="{Binding AddCommand}">
+            <Button Content="CARS" Margin="10" Height="40" FontSize="20" Click="ShowCarMenu">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="White"/>
@@ -98,6 +98,6 @@
                 </Button.Style>
             </Button>
         </StackPanel>
-        
+
     </Grid>
 </UserControl>
