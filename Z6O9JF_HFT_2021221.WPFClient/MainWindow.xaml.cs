@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using Z6O9JF_HFT_2021221.WPFClient.UserControls;
 
 namespace Z6O9JF_HFT_2021221.WPFClient
 {
@@ -23,6 +25,17 @@ namespace Z6O9JF_HFT_2021221.WPFClient
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer LiveTime = new DispatcherTimer();
+            LiveTime.Interval = TimeSpan.FromSeconds(1);
+            LiveTime.Tick += timer_Tick;
+            LiveTime.Start();
+
+            cc_MainMenu.Content = new MainMenuUserControl();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\bg.jpg" />
+    <None Remove="Images\bg2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Z6O9JF_HFT_2021221.Models\Z6O9JF_HFT_2021221.Models.csproj" />
   </ItemGroup>
 
@@ -14,6 +19,15 @@
 		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.2" />
 		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Images\bg.jpg" />
+	  <Resource Include="Images\bg2.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Logic\" />
 	</ItemGroup>
 
 </Project>

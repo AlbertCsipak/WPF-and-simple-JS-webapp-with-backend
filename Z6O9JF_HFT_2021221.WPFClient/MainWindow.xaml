@@ -6,42 +6,74 @@
         xmlns:local="clr-namespace:Z6O9JF_HFT_2021221.WPFClient"
         xmlns:vm="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <vm:MainWindowViewModel></vm:MainWindowViewModel>
-    </Window.DataContext>
+        Title="CoolCarDataBaseManager" Height="720" Width="1280" Icon="images/bg.jpg" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True"> 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
+        
+        <Grid.Background>
+            <ImageBrush ImageSource="images/bg2.jpg" Stretch="Fill"></ImageBrush>
+        </Grid.Background>
 
-        <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Grid.Column="0" HorizontalContentAlignment="Stretch">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Content="{Binding Vin}" Grid.Column="0"></Label>
-                        <Label Content="{Binding OwnerId}" Grid.Column="1"></Label>
-                        <Label Content="{Binding BrandId}" Grid.Column="2"></Label>
-                        <Label Content="{Binding MechanicId}" Grid.Column="3"></Label>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="18*"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch">
-            <Button Content="Add" Margin="10" FontSize="20" Command="{Binding AddCommand}"></Button>
-            <Button Content="Remove" Margin="10" FontSize="20" Command="{Binding RemoveCommand}"></Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             
-        </StackPanel>
-        
-        
+            <Button Content="BACK" FontSize="20" Grid.Column="0" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="HOME" FontSize="20" Grid.Column="1">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Label x:Name="LiveTimeLabel" FontSize="20" Grid.Column="2" Background="White"
+              VerticalContentAlignment="Center" Foreground="Red" HorizontalContentAlignment="Center"></Label>
+            
+        </Grid>
+
+        <ContentControl x:Name="cc_MainMenu" Grid.Row="1"></ContentControl>
         
     </Grid>
+    
 </Window>
