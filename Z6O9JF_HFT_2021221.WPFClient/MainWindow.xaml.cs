@@ -18,7 +18,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
 
-            cc_MainMenu.Content = new MainMenuUserControl(cc_MainMenu);
+            cc_MainMenu.Content = new MainControl(cc_MainMenu);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient
 
         private void HomeButton(object sender, RoutedEventArgs e)
         {
-            cc_MainMenu.Content = new MainMenuUserControl(cc_MainMenu);
+            cc_MainMenu.Content = new MainControl(cc_MainMenu);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient
         {
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                .AddSingleton<ICarMenuLogic, CarMenuLogic>()
+                .AddSingleton<ICarControlLogic, CarControlLogic>()
                 .AddSingleton<ICarCreatorService, CarCreatorViaWindow>()
                 .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                 .BuildServiceProvider()

@@ -12,7 +12,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Windows
         public CarCreatorWindow(Car car)
         {
             InitializeComponent();
-            this.DataContext = new CarCreatorVM(car);
+            this.DataContext = new CarCreatorWindowVM(car);
         }
         public CarCreatorWindow()
         {

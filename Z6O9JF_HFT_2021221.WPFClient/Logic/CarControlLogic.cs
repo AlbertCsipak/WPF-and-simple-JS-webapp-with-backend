@@ -4,12 +4,12 @@ using Z6O9JF_HFT_2021221.WPFClient.Services;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.Logic
 {
-    public class CarMenuLogic : ICarMenuLogic
+    public class CarControlLogic : ICarControlLogic
     {
         RestCollection<Car> cars;
         IMessenger messenger;
         ICarCreatorService CarCreatorService;
-        public CarMenuLogic(IMessenger messenger, ICarCreatorService carCreatorService)
+        public CarControlLogic(IMessenger messenger, ICarCreatorService carCreatorService)
         {
             this.messenger = messenger;
             this.CarCreatorService = carCreatorService;
@@ -26,7 +26,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
         }
         public void Edit(Car car)
         {
-
+            cars.Update(car);
         }
         public void Remove(Car car)
         {

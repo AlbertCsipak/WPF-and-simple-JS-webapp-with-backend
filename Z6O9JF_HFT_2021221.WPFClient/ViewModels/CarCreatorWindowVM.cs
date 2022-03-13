@@ -2,14 +2,14 @@
 
 namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 {
-    public class CarCreatorVM
+    public class CarCreatorWindowVM
     {
         public Car Car { get; set; }
-        public CarCreatorVM(Car car)
+        public CarCreatorWindowVM(Car car)
         {
             this.Car = car;
         }
-        public CarCreatorVM()
+        public CarCreatorWindowVM()
         {
 
         }

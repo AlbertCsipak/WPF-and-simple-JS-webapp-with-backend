@@ -2,7 +2,7 @@
 
 namespace Z6O9JF_HFT_2021221.WPFClient.Logic
 {
-    public interface ICarMenuLogic
+    public interface ICarControlLogic
     {
         void Add();
         void Edit(Car car);

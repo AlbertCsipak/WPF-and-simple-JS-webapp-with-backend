@@ -9,9 +9,9 @@ using Z6O9JF_HFT_2021221.WPFClient.Logic;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 {
-    public class CarMenuVM : ObservableRecipient
+    public class CarControlVM : ObservableRecipient
     {
-        ICarMenuLogic carMenuLogic;
+        ICarControlLogic carMenuLogic;
         public RestCollection<Car> Cars { get; set; }
 
         private Car selectedCar;
@@ -21,8 +21,28 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
             get { return selectedCar; }
             set
             {
-                SetProperty(ref selectedCar, value); (RemoveCommand as RelayCommand).NotifyCanExecuteChanged();
-                (EditCommand as RelayCommand).NotifyCanExecuteChanged();
+                if (value != null)
+                {
+                    selectedCar = new Car()
+                    {
+                        Brand = value.Brand,
+                        Owner = value.Owner,
+                        Mechanic = value.Mechanic,
+                        BodyStyle = value.BodyStyle,
+                        Engine = value.Engine,
+                        Vin = value.Vin,
+                        Color = value.Color,
+                        Model = value.Model,
+                        ServiceCost = value.ServiceCost,
+                        BrandId = value.BrandId,
+                        EngineCode = value.EngineCode, 
+                        MechanicId = value.MechanicId,
+                        OwnerId = value.OwnerId
+                    };
+                    OnPropertyChanged();
+                    (RemoveCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (EditCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
             }
         }
 
@@ -42,11 +62,11 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     .Metadata.DefaultValue;
             }
         }
-        public CarMenuVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarMenuLogic>())
+        public CarControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarControlLogic>())
         {
 
         }
-        public CarMenuVM(ICarMenuLogic carMenuLogic)
+        public CarControlVM(ICarControlLogic carMenuLogic)
         {
             this.carMenuLogic = carMenuLogic;
             if (!IsInDesignMode)

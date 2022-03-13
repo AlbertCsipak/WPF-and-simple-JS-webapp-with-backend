@@ -6,22 +6,22 @@ namespace Z6O9JF_HFT_2021221.WPFClient.UserControls
     /// <summary>
     /// Interaction logic for MainMenuUserControl.xaml
     /// </summary>
-    public partial class MainMenuUserControl : UserControl
+    public partial class MainControl : UserControl
     {
         ContentControl CC;
-        public MainMenuUserControl(ContentControl cc)
+        public MainControl(ContentControl cc)
         {
             InitializeComponent();
             this.CC = cc;
         }
-        public MainMenuUserControl()
+        public MainControl()
         {
 
         }
 
         private void ShowCarMenu(object sender, RoutedEventArgs e)
         {
-            CC.Content = new CarMenuUserControl(CC);
+            CC.Content = new CarControl();
         }
     }
 }

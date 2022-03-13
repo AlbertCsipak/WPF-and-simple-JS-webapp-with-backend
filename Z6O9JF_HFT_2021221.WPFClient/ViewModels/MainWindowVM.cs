@@ -7,7 +7,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
         public MainWindowVM()
         {
             //booster
-            RestCollection<Car> cars = new RestCollection<Car>("http://localhost:11111/", "car", "hub");
+            //RestCollection<Car> cars = new RestCollection<Car>("http://localhost:11111/", "car", "hub");
         }
 
     }
