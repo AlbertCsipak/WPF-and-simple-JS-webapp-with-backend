@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,13 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Z6O9JF_HFT_2021221.Models;
+using Z6O9JF_HFT_2021221.WPFClient.Logic;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 {
     public class AdvancedControlVM : ObservableRecipient
     {
-        public RestService restService { get; set; }
+        IAdvancedControlLogic advancedControlLogic;
         public ObservableCollection<string> ServiceIncome { get; set; }
+        public ObservableCollection<string> MechanicEngineTypes { get; set; }
+        public ObservableCollection<string> AVGServiceCost { get; set; }
+        public ObservableCollection<string> CarBrandsInService { get; set; }
         public static bool IsInDesignMode
         {
             get
@@ -27,24 +32,23 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     .Metadata.DefaultValue;
             }
         }
-        //public MainWindowVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarControlLogic>())
-        //{
+        public AdvancedControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<IAdvancedControlLogic>())
+        {
 
-        //}
-        public AdvancedControlVM()
+        }
+        public AdvancedControlVM(IAdvancedControlLogic advancedControlLogic)
         {
             if (!IsInDesignMode)
             {
+                this.advancedControlLogic = advancedControlLogic;
+                ServiceIncome = new();
+                MechanicEngineTypes = new();
+                AVGServiceCost = new();
+                CarBrandsInService = new();
 
-                var get = restService.Get<KeyValuePair<string, int>>("advanced/serviceincome");
-
-                foreach (var item in get)
-                {
-                    ServiceIncome.Add(item.Key.ToString() + " " + item.Value.ToString());
-                }
-
-
+                advancedControlLogic.Setup(ServiceIncome, MechanicEngineTypes, AVGServiceCost, CarBrandsInService);
             }
+
         }
     }
 }

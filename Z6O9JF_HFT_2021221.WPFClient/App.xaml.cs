@@ -17,6 +17,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient
                 new ServiceCollection()
                 .AddSingleton<ICarControlLogic, CarControlLogic>()
                 .AddSingleton<IMechanicControlLogic, MechanicControlLogic>()
+                .AddSingleton<IAdvancedControlLogic, AdvancedControlLogic>()
                 .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                 .BuildServiceProvider()
             );

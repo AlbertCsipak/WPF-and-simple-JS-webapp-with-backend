@@ -43,6 +43,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     OnPropertyChanged();
                     (RemoveCommand as RelayCommand).NotifyCanExecuteChanged();
                     (EditCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (AddCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
@@ -76,7 +77,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 carMenuLogic.Setup(Cars);
             }
 
-            AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar));
+            AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar),()=> SelectedCar!=null);
             RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);
             EditCommand = new RelayCommand(() => carMenuLogic.Edit(SelectedCar), () => SelectedCar != null);
 

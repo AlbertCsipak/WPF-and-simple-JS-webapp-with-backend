@@ -13,7 +13,7 @@
     <UserControl.DataContext>
         <Binding Source="{StaticResource vm}" />
     </UserControl.DataContext>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -40,10 +40,34 @@
             <Label FontSize="20" Content="Color" Background="White" HorizontalContentAlignment="Center"></Label>
             <TextBox Text="{Binding SelectedCar.Color}" FontSize="20"></TextBox>
 
-            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Margin="10"></Button>
-            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Margin="10"></Button>
-            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Margin="10"></Button>
+            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Height="80"></Button>
+            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Height="80"></Button>
+            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Height="80"></Button>
         </StackPanel>
-        <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Grid.Column="1"></ListBox>
+        <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Grid.Column="1" Opacity="0.9" HorizontalContentAlignment="Stretch">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="{Binding Vin}" FontSize="20" ContentStringFormat="VIN: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="1" Content="{Binding MechanicId}" FontSize="20" ContentStringFormat="Mechanic: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="2" Content="{Binding BrandId}" FontSize="20" ContentStringFormat="Brand: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="3" Content="{Binding Model}" FontSize="20" ContentStringFormat="Model: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="4" Content="{Binding BodyStyle}" FontSize="20" ContentStringFormat="BodyStyle: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="5" Content="{Binding Color}" FontSize="20" ContentStringFormat="Color: {0}" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

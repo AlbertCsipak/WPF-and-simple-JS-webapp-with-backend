@@ -4,9 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.UserControls"
+             xmlns:vm="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <vm:AdvancedControlVM x:Key="vm" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource vm}" />
+    </UserControl.DataContext>
+
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox Background="White" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding ServiceIncome}" 
+                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+
+        <ListBox Background="White" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding MechanicEngineTypes}" 
+                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+
+        <ListBox Background="White" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AVGServiceCost}" 
+                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+
+        <ListBox Background="White" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding CarBrandsInService}" 
+                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+
+
     </Grid>
 </UserControl>

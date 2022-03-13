@@ -15,28 +15,9 @@ namespace Z6O9JF_HFT_2021221.WPFClient
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "swagger")
+        public RestService(string baseurl)
         {
-            bool isOk = false;
-            do
-            {
-                isOk = Ping(baseurl + pingableEndpoint);
-            } while (isOk == false);
             Init(baseurl);
-        }
-
-        private bool Ping(string url)
-        {
-            try
-            {
-                WebClient wc = new WebClient();
-                wc.DownloadData(url);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         private void Init(string baseurl)
@@ -287,7 +268,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient
         public RestCollection(string baseurl, string endpoint, string hub = null)
         {
             hasSignalR = hub != null;
-            this.rest = new RestService(baseurl, endpoint);
+            this.rest = new RestService(baseurl);
             if (hub != null)
             {
                 this.notify = new NotifyService(baseurl + hub);

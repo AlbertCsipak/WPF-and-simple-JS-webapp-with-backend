@@ -10,13 +10,11 @@ namespace Z6O9JF_HFT_2021221.WPFClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        CarControl carControl = new();
-        MechanicControl mechanicControl = new();
-        BrandControl brandControl = new();
         public MainWindow()
         {
             InitializeComponent();
             Clock();
+            cc_MainMenu.Content = new AdvancedControl();
         }
 
         void Clock()
@@ -33,20 +31,20 @@ namespace Z6O9JF_HFT_2021221.WPFClient
 
         private void CarButton(object sender, RoutedEventArgs e)
         {
-           cc_MainMenu.Content = carControl;
+           cc_MainMenu.Content = new CarControl();
         }
 
         private void HomeButton(object sender, RoutedEventArgs e)
         {
-            cc_MainMenu.Content = null;
+            cc_MainMenu.Content = new AdvancedControl();
         }
         private void MechanicButton(object sender, RoutedEventArgs e)
         {
-            cc_MainMenu.Content = mechanicControl;
+            cc_MainMenu.Content = new MechanicControl();
         }
         private void BrandButton(object sender, RoutedEventArgs e)
         {
-            cc_MainMenu.Content = brandControl;
+            cc_MainMenu.Content = new BrandControl();
         }
     }
 }
