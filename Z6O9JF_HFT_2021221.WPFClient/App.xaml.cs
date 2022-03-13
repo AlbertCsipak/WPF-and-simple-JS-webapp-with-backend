@@ -2,6 +2,8 @@
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System.Windows;
+using Z6O9JF_HFT_2021221.WPFClient.Logic;
+using Z6O9JF_HFT_2021221.WPFClient.Services;
 
 namespace Z6O9JF_HFT_2021221.WPFClient
 {
@@ -14,8 +16,8 @@ namespace Z6O9JF_HFT_2021221.WPFClient
         {
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                //.AddSingleton<IHeroLogic, HeroLogic>()
-                //.AddSingleton<IEditorService, EditorViaWindow>()
+                .AddSingleton<ICarMenuLogic, CarMenuLogic>()
+                .AddSingleton<ICarCreatorService, CarCreatorViaWindow>()
                 .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                 .BuildServiceProvider()
             );

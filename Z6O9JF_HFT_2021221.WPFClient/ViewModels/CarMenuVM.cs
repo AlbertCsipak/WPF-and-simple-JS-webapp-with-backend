@@ -1,19 +1,17 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Z6O9JF_HFT_2021221.Models;
+using Z6O9JF_HFT_2021221.WPFClient.Logic;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 {
     public class CarMenuVM : ObservableRecipient
     {
+        ICarMenuLogic carMenuLogic;
         public RestCollection<Car> Cars { get; set; }
 
         private Car selectedCar;
@@ -21,7 +19,11 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
         public Car SelectedCar
         {
             get { return selectedCar; }
-            set { SetProperty(ref selectedCar, value); (RemoveCommand as RelayCommand).NotifyCanExecuteChanged(); }
+            set
+            {
+                SetProperty(ref selectedCar, value); (RemoveCommand as RelayCommand).NotifyCanExecuteChanged();
+                (EditCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
         }
 
         public ICommand AddCommand { get; set; }
@@ -40,16 +42,22 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     .Metadata.DefaultValue;
             }
         }
-        public CarMenuVM()
+        public CarMenuVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarMenuLogic>())
         {
+
+        }
+        public CarMenuVM(ICarMenuLogic carMenuLogic)
+        {
+            this.carMenuLogic = carMenuLogic;
             if (!IsInDesignMode)
             {
                 Cars = new RestCollection<Car>("http://localhost:11111/", "car", "hub");
+                carMenuLogic.Setup(Cars);
             }
 
-            AddCommand = new RelayCommand(() => Cars.Add(new Car{ BrandId = 1, OwnerId = 1, MechanicId = 1, EngineCode = 1 })) ;
-            RemoveCommand = new RelayCommand(() => Cars.Delete(SelectedCar.Vin),()=>SelectedCar!=null);
-            EditCommand = new RelayCommand(() => Cars.Delete(SelectedCar.Vin), () => SelectedCar != null);
+            AddCommand = new RelayCommand(() => carMenuLogic.Add());
+            RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);
+            EditCommand = new RelayCommand(() => carMenuLogic.Edit(SelectedCar), () => SelectedCar != null);
 
         }
     }
