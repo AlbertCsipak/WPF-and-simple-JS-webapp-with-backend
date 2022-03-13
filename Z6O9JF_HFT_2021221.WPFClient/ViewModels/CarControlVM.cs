@@ -13,6 +13,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
     {
         ICarControlLogic carMenuLogic;
         public RestCollection<Car> Cars { get; set; }
+        public RestCollection<Mechanic> Mechanics { get; set; }
 
         private Car selectedCar;
 
@@ -35,7 +36,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                         Model = value.Model,
                         ServiceCost = value.ServiceCost,
                         BrandId = value.BrandId,
-                        EngineCode = value.EngineCode, 
+                        EngineCode = value.EngineCode,
                         MechanicId = value.MechanicId,
                         OwnerId = value.OwnerId
                     };
@@ -75,7 +76,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 carMenuLogic.Setup(Cars);
             }
 
-            AddCommand = new RelayCommand(() => carMenuLogic.Add());
+            AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar));
             RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);
             EditCommand = new RelayCommand(() => carMenuLogic.Edit(SelectedCar), () => SelectedCar != null);
 

@@ -1,28 +1,37 @@
 ﻿using Microsoft.Toolkit.Mvvm.Messaging;
 using Z6O9JF_HFT_2021221.Models;
-using Z6O9JF_HFT_2021221.WPFClient.Services;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.Logic
 {
     public class CarControlLogic : ICarControlLogic
     {
         RestCollection<Car> cars;
-        IMessenger messenger;
-        ICarCreatorService CarCreatorService;
-        public CarControlLogic(IMessenger messenger, ICarCreatorService carCreatorService)
+        RestCollection<Mechanic> mechanics;
+        public CarControlLogic()
         {
-            this.messenger = messenger;
-            this.CarCreatorService = carCreatorService;
+
         }
-        public void Setup(RestCollection<Car> cars) { this.cars = cars; }
-        public void Add()
+        public void Setup(RestCollection<Car> cars) { 
+            this.cars = cars; 
+        }
+        public void Add(Car car)
         {
-            Car car = new Car();
-            CarCreatorService.Create(car);
-            if (car != null)
+            Car newCar = new Car()
             {
-                cars.Add(car);
-            }
+                BrandId = car.BrandId,
+                ServiceCost = car.ServiceCost,
+                EngineCode = car.EngineCode,
+                MechanicId = car.MechanicId,
+                OwnerId = car.OwnerId,
+                Model = car.Model,
+                Mechanic = car.Mechanic,
+                BodyStyle = car.BodyStyle,
+                Brand = car.Brand,
+                Color = car.Color,
+                Engine = car.Engine,
+                Owner = car.Owner
+            };
+            cars.Add(newCar);
         }
         public void Edit(Car car)
         {

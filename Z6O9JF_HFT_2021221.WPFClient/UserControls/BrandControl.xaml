@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Z6O9JF_HFT_2021221.WPFClient.UserControls.CarControl"
+﻿<UserControl x:Class="Z6O9JF_HFT_2021221.WPFClient.UserControls.BrandControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,7 +13,7 @@
     <UserControl.DataContext>
         <Binding Source="{StaticResource vm}" />
     </UserControl.DataContext>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -21,22 +21,16 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Stretch">
-            
-            <Label Content="{Binding SelectedCar.Vin}" ContentStringFormat="Currently Selected: {0}" FontSize="20" 
-                   Background="White" Height="50" HorizontalContentAlignment="Center"></Label>
-            
+
             <Label FontSize="20" Content="Model" Background="White" HorizontalContentAlignment="Center"></Label>
             <TextBox Text="{Binding SelectedCar.Model}" FontSize="20"></TextBox>
-            
-            <Label FontSize="20" Content="Mechanic" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.MechanicId}" FontSize="20"></TextBox>
 
-            <Label FontSize="20" Content="Brand" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.BrandId}" FontSize="20"></TextBox>
+            <Label FontSize="20" Content="ServiceCost" Background="White" HorizontalContentAlignment="Center"></Label>
+            <TextBox Text="{Binding SelectedCar.ServiceCost}" FontSize="20"></TextBox>
 
             <Label FontSize="20" Content="BodyStyle" Background="White" HorizontalContentAlignment="Center"></Label>
             <TextBox Text="{Binding SelectedCar.BodyStyle}" FontSize="20"></TextBox>
-            
+
             <Label FontSize="20" Content="Color" Background="White" HorizontalContentAlignment="Center"></Label>
             <TextBox Text="{Binding SelectedCar.Color}" FontSize="20"></TextBox>
 

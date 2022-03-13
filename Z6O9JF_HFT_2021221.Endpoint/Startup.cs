@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Z6O9JF_HFT_2021221.Data;
@@ -43,6 +45,15 @@ namespace Z6O9JF_HFT_2021221.Endpoint
             }
 
             app.UseRouting();
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                .Get<IExceptionHandlerPathFeature>()
+                .Error;
+                var response = new { error = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
 
             app.UseEndpoints(endpoints =>
             {
