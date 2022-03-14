@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -13,10 +14,9 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
     {
         ICarControlLogic carMenuLogic;
         public RestCollection<Car> Cars { get; set; }
-        public RestCollection<Mechanic> Mechanics { get; set; }
+        public ObservableCollection<int> MechanicIds { get { return new(carMenuLogic.MechanicIds); } }
 
         private Car selectedCar;
-
         public Car SelectedCar
         {
             get { return selectedCar; }
@@ -47,7 +47,6 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 }
             }
         }
-
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
@@ -64,10 +63,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     .Metadata.DefaultValue;
             }
         }
-        public CarControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarControlLogic>())
-        {
-
-        }
+        public CarControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarControlLogic>()) { }
         public CarControlVM(ICarControlLogic carMenuLogic)
         {
             this.carMenuLogic = carMenuLogic;
@@ -77,9 +73,14 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 carMenuLogic.Setup(Cars);
             }
 
-            AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar),()=> SelectedCar!=null);
+            AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar), () => SelectedCar != null);
             RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);
             EditCommand = new RelayCommand(() => carMenuLogic.Edit(SelectedCar), () => SelectedCar != null);
+
+            Messenger.Register<CarControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
+            {
+                OnPropertyChanged("MechanicIds");
+            });
 
         }
     }

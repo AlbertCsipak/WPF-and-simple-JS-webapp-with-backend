@@ -1,4 +1,6 @@
-﻿using Microsoft.Toolkit.Mvvm.Messaging;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.Logic
@@ -6,13 +8,12 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
     public class CarControlLogic : ICarControlLogic
     {
         RestCollection<Car> cars;
-        RestCollection<Mechanic> mechanics;
-        public CarControlLogic()
+        RestService restService = new("http://localhost:11111/");
+        public IList<int> MechanicIds { get { return restService.Get<Mechanic>("mechanic").Select(t => t.MechanicId).ToList(); } }
+        public CarControlLogic() { }
+        public void Setup(RestCollection<Car> cars)
         {
-
-        }
-        public void Setup(RestCollection<Car> cars) { 
-            this.cars = cars; 
+            this.cars = cars;
         }
         public void Add(Car car)
         {

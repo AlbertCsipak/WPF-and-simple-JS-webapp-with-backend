@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Z6O9JF_HFT_2021221.Models;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.Logic
@@ -52,7 +48,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
 
                 foreach (var item1 in item.Value)
                 {
-                    content += " "+item1.ToString();
+                    content += " " + item1.ToString();
                 }
 
                 mechanicEngineTypes.Add(content);

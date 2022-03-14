@@ -45,7 +45,7 @@
             <TextBox Text="{Binding SelectedCar.Model}" FontSize="20" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
             <Label FontSize="20" Content="Mechanic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3"></Label>
-            <TextBox Text="{Binding SelectedCar.MechanicId}" FontSize="20" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            <ComboBox ItemsSource="{Binding MechanicIds}" SelectedItem="{Binding SelectedCar.MechanicId}" FontSize="20" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
 
             <Label FontSize="20" Content="Brand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5"></Label>
             <TextBox Text="{Binding SelectedCar.BrandId}" FontSize="20" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
