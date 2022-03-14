@@ -25,7 +25,8 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
         {
             Brand newBrand = new Brand()
             {
-
+                Name = brand.Name,
+                Location = brand.Location
             };
             brands.Add(newBrand);
             messenger.Send("msg", "BasicChannel");

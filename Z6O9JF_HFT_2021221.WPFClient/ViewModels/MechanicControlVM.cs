@@ -82,19 +82,19 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
             {
                 Mechanics = new RestCollection<Mechanic>("http://localhost:11111/", "mechanic", "hub");
                 mechanicLogic.Setup(Mechanics);
+
+                selectedMechanic = new();
+
+                AddCommand = new RelayCommand(() => mechanicLogic.Add(SelectedMechanic), () => SelectedMechanic.Name != null);
+                RemoveCommand = new RelayCommand(() => mechanicLogic.Remove(SelectedMechanic), () => RemoveaBool);
+                EditCommand = new RelayCommand(() => mechanicLogic.Edit(SelectedMechanic), () => SelectedMechanic.Name != null);
+
+                Messenger.Register<MechanicControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
+                {
+                    OnPropertyChanged("ServiceIds");
+                    OnPropertyChanged("SelectedMechanic");
+                });
             }
-
-            selectedMechanic = new();
-            
-            AddCommand = new RelayCommand(() => mechanicLogic.Add(SelectedMechanic), () => SelectedMechanic.Name != null);
-            RemoveCommand = new RelayCommand(() => mechanicLogic.Remove(SelectedMechanic), () => RemoveaBool);
-            EditCommand = new RelayCommand(() => mechanicLogic.Edit(SelectedMechanic), () => SelectedMechanic.Name != null);
-
-            Messenger.Register<MechanicControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
-            {
-                OnPropertyChanged("ServiceIds");
-                OnPropertyChanged("SelectedMechanic");
-            });
         }
     }
 }

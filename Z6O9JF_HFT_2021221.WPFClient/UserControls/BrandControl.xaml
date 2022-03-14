@@ -44,7 +44,7 @@
             <Label FontSize="20" Content="Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"></Label>
             <TextBox Text="{Binding SelectedBrand.Name}" FontSize="20" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-            <Label FontSize="20" Content="CarService" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3"></Label>
+            <Label FontSize="20" Content="Location" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3"></Label>
             <TextBox Text="{Binding SelectedBrand.Location}" FontSize="20" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
             <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Grid.Row="11"></Button>
@@ -64,8 +64,8 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="0" Content="{Binding Name}" FontSize="20" ContentStringFormat="Name: {0}" HorizontalContentAlignment="Center"></Label>
-                            <Label Grid.Column="1" Content="{Binding BrandId}" FontSize="20" ContentStringFormat="ID: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="0" Content="{Binding BrandId}" FontSize="20" ContentStringFormat="ID: {0}" HorizontalContentAlignment="Center"></Label>
+                            <Label Grid.Column="1" Content="{Binding Name}" FontSize="20" ContentStringFormat="Name: {0}" HorizontalContentAlignment="Center"></Label>
                             <Label Grid.Column="2" Content="{Binding Location}" FontSize="20" ContentStringFormat="Location: {0}" HorizontalContentAlignment="Center"></Label>
 
                         </Grid>

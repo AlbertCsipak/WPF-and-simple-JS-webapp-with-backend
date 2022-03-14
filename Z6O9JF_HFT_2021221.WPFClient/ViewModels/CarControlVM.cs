@@ -70,36 +70,38 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
         public CarControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<ICarControlLogic>()) { }
         public CarControlVM(ICarControlLogic carMenuLogic)
         {
-            this.carMenuLogic = carMenuLogic;
             if (!IsInDesignMode)
             {
+                this.carMenuLogic = carMenuLogic;
                 Cars = new RestCollection<Car>("http://localhost:11111/", "car", "hub");
                 carMenuLogic.Setup(Cars);
+                Colors = new();
+                Styles = new();
+
+                Colors.Add(ColorEnum.Green);
+                Colors.Add(ColorEnum.Black);
+                Colors.Add(ColorEnum.Blue);
+                Colors.Add(ColorEnum.Gray);
+                Colors.Add(ColorEnum.Red);
+                Colors.Add(ColorEnum.White);
+                Colors.Add(ColorEnum.Yellow);
+
+                Styles.Add(BodyStyleEnum.Sedan);
+                Styles.Add(BodyStyleEnum.Coupe);
+                Styles.Add(BodyStyleEnum.Hatchback);
+                Styles.Add(BodyStyleEnum.Wagon);
+
+                AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar), () => SelectedCar != null);
+                RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);
+                EditCommand = new RelayCommand(() => carMenuLogic.Edit(SelectedCar), () => SelectedCar != null);
+
+                Messenger.Register<CarControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
+                {
+                    OnPropertyChanged("MechanicIds");
+                });
+
             }
-            Colors = new();
-            Styles = new();
 
-            Colors.Add(ColorEnum.Green);
-            Colors.Add(ColorEnum.Black);
-            Colors.Add(ColorEnum.Blue);
-            Colors.Add(ColorEnum.Gray);
-            Colors.Add(ColorEnum.Red);
-            Colors.Add(ColorEnum.White);
-            Colors.Add(ColorEnum.Yellow);
-
-            Styles.Add(BodyStyleEnum.Sedan);
-            Styles.Add(BodyStyleEnum.Coupe);
-            Styles.Add(BodyStyleEnum.Hatchback);
-            Styles.Add(BodyStyleEnum.Wagon);
-
-            AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar), () => SelectedCar != null);
-            RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);
-            EditCommand = new RelayCommand(() => carMenuLogic.Edit(SelectedCar), () => SelectedCar != null);
-
-            Messenger.Register<CarControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
-            {
-                OnPropertyChanged("MechanicIds");
-            });
 
         }
     }
