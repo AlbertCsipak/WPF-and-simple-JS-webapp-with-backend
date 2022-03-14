@@ -1,7 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -15,11 +15,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
     {
         IMechanicControlLogic mechanicLogic;
         public RestCollection<Mechanic> Mechanics { get; set; }
-
         private Mechanic selectedMechanic;
-        RestService restService;
-        public List<int> ServiceIds { get; set; }
-
         public Mechanic SelectedMechanic
         {
             get { return selectedMechanic; }
@@ -42,8 +38,23 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 }
             }
         }
+        public ObservableCollection<int> ServiceIds { get { return new(mechanicLogic.ServiceIds); } }
 
-        //public ObservableCollection<string> ServiceIds {get { return  } }
+        RestService restService = new("http://localhost:11111/");
+        public bool RemoveaBool
+        {
+            get
+            {
+                if (selectedMechanic.Name!=null)
+                {
+                    return restService.Get<Car>("car").Where(t => t.MechanicId == selectedMechanic.MechanicId).Count() == 0;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
@@ -61,30 +72,26 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     .Metadata.DefaultValue;
             }
         }
-        public MechanicControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<IMechanicControlLogic>())
-        {
-
-        }
+        public MechanicControlVM() : this(IsInDesignMode ? null : Ioc.Default.GetService<IMechanicControlLogic>()) { }
         public MechanicControlVM(IMechanicControlLogic mechanicLogic)
         {
             this.mechanicLogic = mechanicLogic;
             if (!IsInDesignMode)
             {
                 Mechanics = new RestCollection<Mechanic>("http://localhost:11111/", "mechanic", "hub");
-
                 mechanicLogic.Setup(Mechanics);
             }
+
             selectedMechanic = new();
+            
+            AddCommand = new RelayCommand(() => mechanicLogic.Add(SelectedMechanic), () => SelectedMechanic.Name != null);
+            RemoveCommand = new RelayCommand(() => mechanicLogic.Remove(SelectedMechanic), () => RemoveaBool);
+            EditCommand = new RelayCommand(() => mechanicLogic.Edit(SelectedMechanic), () => SelectedMechanic.Name != null);
 
-            restService = new("http://localhost:11111/");
-
-            ServiceIds = restService.Get<CarService>("carservice").Select(t => t.TaxNumber).ToList();
-
-            AddCommand = new RelayCommand(() => mechanicLogic.Add(SelectedMechanic), () => SelectedMechanic != null);
-            RemoveCommand = new RelayCommand(() => mechanicLogic.Remove(SelectedMechanic),
-                () => restService.Get<Car>("car").Where(t => t.MechanicId == selectedMechanic.MechanicId).Count() == 0);
-            EditCommand = new RelayCommand(() => mechanicLogic.Edit(SelectedMechanic), () => SelectedMechanic != null);
-
+            Messenger.Register<MechanicControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
+            {
+                OnPropertyChanged("ServiceIds");
+            });
         }
     }
 }
