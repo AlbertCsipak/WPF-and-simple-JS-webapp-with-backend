@@ -15,6 +15,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
     {
         IMechanicControlLogic mechanicLogic;
         public RestCollection<Mechanic> Mechanics { get; set; }
+
         private Mechanic selectedMechanic;
         public Mechanic SelectedMechanic
         {
@@ -36,6 +37,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     (RemoveCommand as RelayCommand).NotifyCanExecuteChanged();
                     (EditCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
+
             }
         }
         public ObservableCollection<int> ServiceIds { get { return new(mechanicLogic.ServiceIds); } }
@@ -91,6 +93,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
             Messenger.Register<MechanicControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
             {
                 OnPropertyChanged("ServiceIds");
+                OnPropertyChanged("SelectedMechanic");
             });
         }
     }

@@ -35,6 +35,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
             if (!IsInDesignMode)
             {
                 this.advancedControlLogic = advancedControlLogic;
+
                 ServiceIncome = new();
                 MechanicEngineTypes = new();
                 AVGServiceCost = new();
@@ -42,6 +43,14 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 
                 advancedControlLogic.Setup(ServiceIncome, MechanicEngineTypes, AVGServiceCost, CarBrandsInService);
             }
+
+            Messenger.Register<AdvancedControlVM, string, string>(this, "BasicChannel", (recipient, msg) =>
+            {
+                OnPropertyChanged("ServiceIncome");
+                OnPropertyChanged("MechanicEngineTypes");
+                OnPropertyChanged("AVGServiceCost");
+                OnPropertyChanged("CarBrandsInService");
+            });
 
         }
     }

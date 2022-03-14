@@ -14,7 +14,7 @@
         <Binding Source="{StaticResource vm}" />
     </UserControl.DataContext>
 
-    <Grid>
+    <Grid Background="White" Opacity="0.80">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -25,18 +25,16 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListBox Background="White" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding ServiceIncome}" 
-                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding ServiceIncome}" 
+                 Margin="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40"></ListBox>
 
-        <ListBox Background="White" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding MechanicEngineTypes}" 
-                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+        <ListBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding MechanicEngineTypes}" 
+                 Margin="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40"></ListBox>
 
-        <ListBox Background="White" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AVGServiceCost}" 
-                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
+        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AVGServiceCost}" 
+                 Margin="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40"></ListBox>
 
-        <ListBox Background="White" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding CarBrandsInService}" 
-                 Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"></ListBox>
-
-
+        <ListBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding CarBrandsInService}" 
+                 Margin="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40"></ListBox>
     </Grid>
 </UserControl>

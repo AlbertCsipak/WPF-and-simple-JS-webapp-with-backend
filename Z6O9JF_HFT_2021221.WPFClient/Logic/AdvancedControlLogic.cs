@@ -38,6 +38,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
                 serviceIncome.Add(item.Key.ToString() + " " + item.Value.ToString());
             }
         }
+
         void MechanicEngineTypes()
         {
             var get = restService.Get<KeyValuePair<string, List<Enums.EngineType>>>("advanced/mechanicenginetypes");
@@ -54,6 +55,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
                 mechanicEngineTypes.Add(content);
             }
         }
+
         void AVGServiceCostByBrand()
         {
             var get = restService.Get<KeyValuePair<string, double>>("advanced/avgservicecostbybrands");
@@ -63,6 +65,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
             }
 
         }
+
         void CarBrandsInService()
         {
             var get = restService.Get<KeyValuePair<string, List<string>>>("advanced/carbrandsinservice");
