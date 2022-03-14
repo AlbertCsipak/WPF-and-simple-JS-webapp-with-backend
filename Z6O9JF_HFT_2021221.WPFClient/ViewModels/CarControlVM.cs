@@ -1,14 +1,12 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using Z6O9JF_HFT_2021221.Models;
 using Z6O9JF_HFT_2021221.WPFClient.Logic;
-using static Z6O9JF_HFT_2021221.Models.Enums;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 {
@@ -17,9 +15,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
         ICarControlLogic carMenuLogic;
         public RestCollection<Car> Cars { get; set; }
         public ObservableCollection<int> MechanicIds { get { return new(carMenuLogic.MechanicIds); } }
-        public ObservableCollection<int> BrandIds { get { return new(carMenuLogic.BrandIds); } }
-        public List<ColorEnum> Colors { get; set; }
-        public List<BodyStyleEnum> Styles { get; set; }
+
         private Car selectedCar;
         public Car SelectedCar
         {
@@ -31,7 +27,6 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                     selectedCar = new Car()
                     {
                         Brand = value.Brand,
-                        ServiceCost = value.ServiceCost,
                         Owner = value.Owner,
                         Mechanic = value.Mechanic,
                         BodyStyle = value.BodyStyle,
@@ -39,6 +34,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                         Vin = value.Vin,
                         Color = value.Color,
                         Model = value.Model,
+                        ServiceCost = value.ServiceCost,
                         BrandId = value.BrandId,
                         EngineCode = value.EngineCode,
                         MechanicId = value.MechanicId,
@@ -76,21 +72,6 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 Cars = new RestCollection<Car>("http://localhost:11111/", "car", "hub");
                 carMenuLogic.Setup(Cars);
             }
-            Colors = new();
-            Styles = new();
-
-            Colors.Add(ColorEnum.Green);
-            Colors.Add(ColorEnum.Black);
-            Colors.Add(ColorEnum.Blue);
-            Colors.Add(ColorEnum.Gray);
-            Colors.Add(ColorEnum.Red);
-            Colors.Add(ColorEnum.White);
-            Colors.Add(ColorEnum.Yellow);
-
-            Styles.Add(BodyStyleEnum.Sedan);
-            Styles.Add(BodyStyleEnum.Coupe);
-            Styles.Add(BodyStyleEnum.Hatchback);
-            Styles.Add(BodyStyleEnum.Wagon);
 
             AddCommand = new RelayCommand(() => carMenuLogic.Add(SelectedCar), () => SelectedCar != null);
             RemoveCommand = new RelayCommand(() => carMenuLogic.Remove(SelectedCar), () => SelectedCar != null);

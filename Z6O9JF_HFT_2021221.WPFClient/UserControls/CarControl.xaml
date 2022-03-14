@@ -36,8 +36,6 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Label Content="{Binding SelectedCar.Vin}" ContentStringFormat="Currently Selected: {0}" FontSize="20" 
@@ -50,20 +48,17 @@
             <ComboBox ItemsSource="{Binding MechanicIds}" SelectedItem="{Binding SelectedCar.MechanicId}" FontSize="20" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
 
             <Label FontSize="20" Content="Brand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5"></Label>
-            <ComboBox ItemsSource="{Binding BrandIds}" SelectedItem="{Binding SelectedCar.BrandId}" FontSize="20" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+            <TextBox Text="{Binding SelectedCar.BrandId}" FontSize="20" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-            <Label FontSize="20" Content="Color" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="7"></Label>
-            <ComboBox ItemsSource="{Binding Colors}" SelectedItem="{Binding SelectedCar.Color}" FontSize="20" Grid.Row="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+            <Label FontSize="20" Content="BodyStyle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="7"></Label>
+            <TextBox Text="{Binding SelectedCar.BodyStyle}" FontSize="20" Grid.Row="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-            <Label FontSize="20" Content="BodyStyle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9"></Label>
-            <ComboBox ItemsSource="{Binding Styles}" SelectedItem="{Binding SelectedCar.BodyStyle}" FontSize="20" Grid.Row="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+            <Label FontSize="20" Content="Color" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9"></Label>
+            <TextBox Text="{Binding SelectedCar.Color}" FontSize="20" Grid.Row="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-            <Label FontSize="20" Content="ServiceCost" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="11"></Label>
-            <TextBox Text="{Binding SelectedCar.ServiceCost }" FontSize="20" Grid.Row="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
-
-            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Grid.Row="13"></Button>
-            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Grid.Row="14"></Button>
-            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Grid.Row="15"></Button>
+            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Grid.Row="11"></Button>
+            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Grid.Row="12"></Button>
+            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Grid.Row="13"></Button>
         </Grid>
 
 
