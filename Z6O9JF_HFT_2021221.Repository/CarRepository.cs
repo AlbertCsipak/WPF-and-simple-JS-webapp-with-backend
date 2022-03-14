@@ -34,6 +34,10 @@ namespace Z6O9JF_HFT_2021221.Repository
             entityToUpdate.BodyStyle = entity.BodyStyle;
             entityToUpdate.Color = entity.Color;
             entityToUpdate.EngineCode = entity.EngineCode;
+            entityToUpdate.ServiceCost = entity.ServiceCost;
+            entityToUpdate.Mechanic = entity.Mechanic;
+            entityToUpdate.Owner = entity.Owner;
+            entityToUpdate.Engine = entity.Engine;
             dataBase.SaveChanges();
         }
         public void Delete(int id)
