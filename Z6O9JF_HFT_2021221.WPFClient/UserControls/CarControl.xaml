@@ -14,37 +14,55 @@
         <Binding Source="{StaticResource vm}" />
     </UserControl.DataContext>
 
-    <Grid>
+    <Grid Background="White" Opacity="0.95">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch">
-            
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
             <Label Content="{Binding SelectedCar.Vin}" ContentStringFormat="Currently Selected: {0}" FontSize="20" 
-                   Background="White" Height="50" HorizontalContentAlignment="Center"></Label>
-            
-            <Label FontSize="20" Content="Model" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.Model}" FontSize="20"></TextBox>
-            
-            <Label FontSize="20" Content="Mechanic" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.MechanicId}" FontSize="20"></TextBox>
+                    Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
 
-            <Label FontSize="20" Content="Brand" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.BrandId}" FontSize="20"></TextBox>
+            <Label FontSize="20" Content="Model" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"></Label>
+            <TextBox Text="{Binding SelectedCar.Model}" FontSize="20" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-            <Label FontSize="20" Content="BodyStyle" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.BodyStyle}" FontSize="20"></TextBox>
-            
-            <Label FontSize="20" Content="Color" Background="White" HorizontalContentAlignment="Center"></Label>
-            <TextBox Text="{Binding SelectedCar.Color}" FontSize="20"></TextBox>
+            <Label FontSize="20" Content="Mechanic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3"></Label>
+            <TextBox Text="{Binding SelectedCar.MechanicId}" FontSize="20" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Height="80"></Button>
-            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Height="80"></Button>
-            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Height="80"></Button>
-        </StackPanel>
-        <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Grid.Column="1" Opacity="0.9" HorizontalContentAlignment="Stretch">
+            <Label FontSize="20" Content="Brand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="5"></Label>
+            <TextBox Text="{Binding SelectedCar.BrandId}" FontSize="20" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+
+            <Label FontSize="20" Content="BodyStyle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="7"></Label>
+            <TextBox Text="{Binding SelectedCar.BodyStyle}" FontSize="20" Grid.Row="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+
+            <Label FontSize="20" Content="Color" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="9"></Label>
+            <TextBox Text="{Binding SelectedCar.Color}" FontSize="20" Grid.Row="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+
+            <Button Content="Add" Command="{Binding AddCommand}" FontSize="20" Grid.Row="11"></Button>
+            <Button Content="Edit" Command="{Binding EditCommand}" FontSize="20" Grid.Row="12"></Button>
+            <Button Content="Remove" Command="{Binding RemoveCommand}" FontSize="20" Grid.Row="13"></Button>
+        </Grid>
+
+
+        <ListBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}" Grid.Column="1" HorizontalContentAlignment="Stretch">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">

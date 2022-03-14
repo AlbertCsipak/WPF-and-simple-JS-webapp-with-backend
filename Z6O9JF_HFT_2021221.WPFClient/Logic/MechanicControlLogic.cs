@@ -12,16 +12,17 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
         RestCollection<Mechanic> mechanics;
         public MechanicControlLogic()
         {
-
+            
         }
         public void Setup(RestCollection<Mechanic> mechanic) { this.mechanics = mechanic; }
         public void Add(Mechanic mechanic)
         {
             Mechanic newMechanic = new Mechanic()
             {
-
+                Name = mechanic.Name,
+                ServiceId = mechanic.ServiceId
             };
-            mechanics.Add(mechanic);
+            mechanics.Add(newMechanic);
         }
         public void Edit(Mechanic mechanic)
         {

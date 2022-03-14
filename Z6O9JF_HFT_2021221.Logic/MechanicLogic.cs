@@ -18,11 +18,11 @@ namespace Z6O9JF_HFT_2021221.Logic
         }
         public void Create(Mechanic entity)
         {
-            if (entity.ServiceId.ToString().Length != 4)
+            if (entity.ServiceId.ToString().Length < 1)
             {
                 throw new ArgumentException("Incorrect ServiceId");
             }
-            else if (entity.MechanicId < 1)
+            else if (entity.MechanicId < 0)
             {
                 throw new ArgumentException("Incorrect MechanicId");
             }
