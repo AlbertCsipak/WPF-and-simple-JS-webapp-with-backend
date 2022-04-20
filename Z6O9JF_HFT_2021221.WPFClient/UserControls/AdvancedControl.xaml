@@ -7,11 +7,8 @@
              xmlns:vm="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
-    <UserControl.Resources>
-        <vm:AdvancedControlVM x:Key="vm" />
-    </UserControl.Resources>
     <UserControl.DataContext>
-        <Binding Source="{StaticResource vm}" />
+        <vm:AdvancedControlVM/>
     </UserControl.DataContext>
 
     <Grid Background="White" Opacity="0.80">

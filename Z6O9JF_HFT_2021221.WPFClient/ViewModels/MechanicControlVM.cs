@@ -47,7 +47,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
         {
             get
             {
-                if (selectedMechanic.Name!=null)
+                if (selectedMechanic.Name != null)
                 {
                     return restService.Get<Car>("car").Where(t => t.MechanicId == selectedMechanic.MechanicId).Count() == 0;
                 }

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Z6O9JF_HFT_2021221.WPFClient"
-        xmlns:vm="clr-namespace:Z6O9JF_HFT_2021221.WPFClient.ViewModels"
         mc:Ignorable="d"
         Title="CoolCarDataBaseManager" Height="720" Width="1280" Icon="images/bg.jpg" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True">
     <Grid>
@@ -27,13 +26,13 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="LiveTimeLabel" FontSize="30" Grid.Column="0" Background="Red"
+            <Label x:Name="LiveTimeLabel" FontSize="30" Grid.Column="0" Background="Blue"
               VerticalContentAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"></Label>
 
             <Button Content="CARS" Click="CarButton" FontSize="30" Grid.Column="1" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Background" Value="Blue"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -45,13 +44,13 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="DarkRed"/>
+                                <Setter Property="Background" Value="DarkBlue"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Content="HOME" Click="HomeButton" FontSize="30" Grid.Column="2" Foreground="Red">
+            <Button Content="HOME" Click="HomeButton" FontSize="30" Grid.Column="2" Foreground="Blue">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="White"/>
@@ -66,7 +65,7 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightPink"/>
+                                <Setter Property="Background" Value="LightBlue"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -75,7 +74,7 @@
             <Button Content="MECHANICS" Click="MechanicButton" FontSize="30" Grid.Column="3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Background" Value="Blue"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -87,7 +86,7 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="DarkRed"/>
+                                <Setter Property="Background" Value="DarkBlue"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -96,7 +95,7 @@
             <Button Content="BRANDS" Click="BrandButton" FontSize="30" Grid.Column="4" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Background" Value="Blue"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -108,7 +107,7 @@
                         </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="DarkRed"/>
+                                <Setter Property="Background" Value="DarkBlue"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>

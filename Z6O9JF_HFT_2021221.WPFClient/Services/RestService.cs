@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,9 +15,29 @@ namespace Z6O9JF_HFT_2021221.WPFClient
     {
         HttpClient client;
 
-        public RestService(string baseurl)
+        public RestService(string baseurl, string pingableEndpoint = "/car")
         {
+            //bool isOk = false;
+            //do
+            //{
+            //    isOk = Ping(baseurl + pingableEndpoint);
+            //} while (isOk == false);
+            //kifagy ha bekapcsolom a pingelést
             Init(baseurl);
+        }
+
+        private bool Ping(string url)
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadData(url);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void Init(string baseurl)
@@ -267,7 +288,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient
         public RestCollection(string baseurl, string endpoint, string hub = null)
         {
             hasSignalR = hub != null;
-            this.rest = new RestService(baseurl);
+            this.rest = new RestService(baseurl, endpoint);
             if (hub != null)
             {
                 this.notify = new NotifyService(baseurl + hub);

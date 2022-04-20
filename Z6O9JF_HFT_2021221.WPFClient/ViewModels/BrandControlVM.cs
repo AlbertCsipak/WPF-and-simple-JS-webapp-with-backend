@@ -1,15 +1,12 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Z6O9JF_HFT_2021221.Models;
 using Z6O9JF_HFT_2021221.WPFClient.Logic;
-using static Z6O9JF_HFT_2021221.Models.Enums;
 
 namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
 {
@@ -27,11 +24,11 @@ namespace Z6O9JF_HFT_2021221.WPFClient.ViewModels
                 {
                     selectedBrand = new Brand()
                     {
-                         Name = value.Name,
-                         BrandId = value.BrandId,
-                         Cars = value.Cars,
-                         Engines = value.Engines,
-                         Location = value.Location
+                        Name = value.Name,
+                        BrandId = value.BrandId,
+                        Cars = value.Cars,
+                        Engines = value.Engines,
+                        Location = value.Location
                     };
                     OnPropertyChanged();
                     (RemoveCommand as RelayCommand).NotifyCanExecuteChanged();
