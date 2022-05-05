@@ -38,6 +38,7 @@ namespace Z6O9JF_HFT_2021221.WPFClient.Logic
                 Owner = car.Owner
             };
             cars.Add(newCar);
+            ;
             messenger.Send("msg", "BasicChannel");
         }
 

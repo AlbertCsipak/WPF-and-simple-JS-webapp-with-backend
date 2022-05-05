@@ -44,6 +44,12 @@ namespace Z6O9JF_HFT_2021221.Endpoint
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:45368"));
+
             app.UseRouting();
 
             app.UseExceptionHandler(c => c.Run(async context =>
